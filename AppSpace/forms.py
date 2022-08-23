@@ -38,6 +38,6 @@ class HabitanteForm(forms.Form):
     apellido = forms.CharField(max_length=40)
     edad = forms.IntegerField()
     idioma = forms.ChoiceField(choices= IDIOMA_CHOICE)
-    planeta_natal = forms.ModelChoiceField(queryset=Planeta.objects.all()) #Se debió utilizar un modelChoiceField para elegir con un queryset la consulta al listado de Planetas
+    planeta_natal = forms.ModelChoiceField(queryset=Planeta.objects.all()) #Se debió utilizar un modelChoiceField para traer con un queryset la consulta al listado de Planetas
     habitando_planeta = forms.ModelChoiceField(queryset=Planeta.objects.all())
 
