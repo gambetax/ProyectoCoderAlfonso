@@ -13,10 +13,10 @@
 
     </form>
 
-    {% if cursos %}
+    {% if habitantes %}
         <h4>Los Habitantes son:</h4>
         {% for habitante in habitantes %}
-            <p>Habitante {{habitante.id}}: nombre {{ curso.nombre }} apellido {{ curso.camada }}</p>
+            <p>{{habitante.id}}: nombre {{ habitante.nombre }} apellido {{ habitante.apellido }} </p>
             <br>
         {% endfor %}
     {% else %}

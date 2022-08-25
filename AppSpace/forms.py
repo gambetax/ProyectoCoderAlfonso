@@ -23,14 +23,15 @@ IDIOMA_CHOICE = [
 ]
 
 class SistemaPlanetarioForm(forms.Form):
-    nombre = forms.CharField(max_length=40)
+    sistema = forms.CharField(max_length=40)
+    cant_estrellas = forms.IntegerField()
     cant_planetas = forms.IntegerField()
-    clase_estrella = forms.ChoiceField(choices=ESTRELLA_CHOICES)
+    clase_estrella = forms.ModelChoiceField(queryset=ClaseEstrella.objects.all())
 
 class EstrellaForm(forms.Form):
     nombre = forms.CharField(max_length=40)
     clase_estrella = forms.ModelChoiceField(queryset=ClaseEstrella.objects.all())
-    temperatura_media = models.IntegerField()
+    temperatura_media = forms.CharField()
     sistema_planetario = forms.ModelChoiceField(queryset=SistemaPlanetario.objects.all())
 
 class PlanetaForm(forms.Form):
@@ -54,19 +55,19 @@ class HabitanteForm(forms.Form):
     habitando_planeta = forms.ModelChoiceField(queryset=Planeta.objects.all())
 
 class BuscarHabitanteForm(forms.Form):
-    nombre = forms.CharField(max_length=40)
     apellido = forms.CharField(max_length=40)
 
+class ClaseEstrellForm(forms.Form):
+    clase_estrella = forms.CharField(max_length=2)
+    temperatura = forms.CharField(max_length=50)
+    color = forms.CharField(max_length=50)
 
 class ClasePlanetaForm(forms.Form):
     clase_planeta = forms.CharField(max_length=50)
     grupo_planeta = forms.CharField(max_length=50)
-    descripcion = forms.CharField(max_length=250)
+    descripcion = forms.CharField(max_length=250, required=False)
 
 class ClaseRegionForm(forms.Form):
     clase_region = forms.CharField(max_length=50)
-    descripcion = forms.CharField(max_length=250)
+    descripcion = forms.CharField(max_length=250, required=False)
 
-class ClaseEstrellForm(forms.Form):
-    clase_estrella = models.CharField(max_length=100)
-    descripcion = models.CharField(max_length=250)

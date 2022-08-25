@@ -2,7 +2,9 @@ import django.db
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.template import loader
-from AppSpace.models import SistemaPlanetario,Estrella,Planeta,Habitante
+from AppSpace.models import SistemaPlanetario,Estrella,Planeta,Habitante,ClasePlaneta, ClaseRegion, ClaseEstrella
+
+
 from AppSpace.forms import SistemaPlanetarioForm
 from AppSpace.forms import HabitanteForm, BuscarHabitanteForm
 from AppSpace.forms import EstrellaForm, ClaseEstrellForm
@@ -56,9 +58,12 @@ def sistema_planetario(request):
         if my_form.is_valid():
             data = my_form.cleaned_data
 
-            form_data = SistemaPlanetarioForm(nombre = data.get('nombre'),
-                                        cant_planetas = data.get('cant_planetas'),
-                                        clase_estrella= data.get('clase_estrella'))
+            form_data = SistemaPlanetario(
+                nombre = data.get('sistema'),
+                cant_estrellas= data.get('cant_estrellas'),
+                cant_planetas = data.get('cant_planetas'),
+                clase_estrella= data.get('clase_estrella')
+            )
             form_data.save()
         else:
             redirect('AppSpace')
@@ -68,11 +73,11 @@ def sistema_planetario(request):
         'sistemas' : sistema_estrellas,
         'my_form' : SistemaPlanetarioForm(),
     }
-    return render(request,'AppSpace/sistemas/sistema.html',contexto)
+    return render(request,'AppSpace/sistemas/sistemas.html',contexto)
 
 def estrellas(request):
     if request.method == 'POST':
-        my_form = Estrella(request.POST)
+        my_form = EstrellaForm(request.POST)
 
         if my_form.is_valid():
             data = my_form.cleaned_data
@@ -81,18 +86,18 @@ def estrellas(request):
                 nombre = data.get('nombre'),
                 clase_estrella = data.get('clase_estrella'),
                 temperatura_media= data.get('temperatura_media'),
-                sistema_estrella = data.get('sistema_estrella')
+                sistema_planetario = data.get('sistema_planetario')
             )
             form_data.save()
         else:
             redirect('AppSpace')
 
-    estrella= Estrella.objects.all()
+    estrellas= Estrella.objects.all()
     contexto = {
-        'estrella' : estrella,
+        'estrellas' : estrellas,
         'my_form' : EstrellaForm(),
     }
-    return render(request,'AppSpace/estrellas/estrella.html')
+    return render(request,'AppSpace/estrellas/estrellas.html', contexto)
 
 def planetas(request):
     if request.method == 'POST':
@@ -158,9 +163,8 @@ def buscar_habitantes(request):
 
     habitantes = []
     if request.method == "POST":
-        nombre = request.POST.get('nombre')
-        apellido = request.POST.get ('apellido')
-        habitantes = Habitante.objects.filter(nombre__icontains=nombre,apellido__icontains=apellido)
+        apellido = request.POST.get('apellido')
+        habitantes = Habitante.objects.filter(apellido__icontains=apellido)
 
     contexto = {
         'my_form': BuscarHabitanteForm(),
@@ -168,4 +172,87 @@ def buscar_habitantes(request):
     }
 
     return render(request,'AppSpace/habitantes/buscar_habitantes.html', contexto)
+
+
+
+
+
+# CARACTERISTICAS DE ESTRELLAS, PLANETAS Y REGIONES
+
+
+
+
+def crear_clase_estrella(request):
+    if request.method == 'POST':
+        my_form = ClaseEstrellForm(request.POST)
+
+        if my_form.is_valid():
+
+            data = my_form.cleaned_data
+
+            form_data = ClaseEstrella(
+                clase_estrella=data.get('clase_estrella'),
+                temperatura=data.get('temperatura'),
+                color=data.get('color'),
+            )
+            form_data.save()
+        else:
+            redirect('AppSpaceInicio')
+
+    clase_estrellas = ClaseEstrella.objects.all()
+
+    contexto = {
+        'clases_estrellas': clase_estrellas,
+        'my_form': ClaseEstrellForm(),
+    }
+    return render(request, 'AppSpace/clase_estrellas.html', contexto)
+
+def crear_clase_planeta(request):
+    if request.method == 'POST':
+        my_form = ClasePlanetaForm(request.POST)
+
+        if my_form.is_valid():
+
+            data = my_form.cleaned_data
+
+            form_data = ClasePlaneta(
+                clase_planeta=data.get('clase_planeta'),
+                grupo_planeta=data.get('grupo_planeta'),
+                descripcion=data.get('descripcion'),
+            )
+            form_data.save()
+        else:
+            redirect('AppSpaceInicio')
+
+    clase_planetas = ClasePlaneta.objects.all()
+
+    contexto = {
+        'clases_planetas': clase_planetas,
+        'my_form': ClasePlanetaForm(),
+    }
+    return render(request, 'AppSpace/clase_planetas.html', contexto)
+def crear_clase_region(request):
+    if request.method == 'POST':
+        my_form = ClaseRegionForm(request.POST)
+
+        if my_form.is_valid():
+
+            data = my_form.cleaned_data
+
+            form_data = ClasePlaneta(
+                clase_planeta=data.get('clase_planeta'),
+                grupo_planeta=data.get('grupo_planeta'),
+                descripcion=data.get('descripcion'),
+            )
+            form_data.save()
+        else:
+            redirect('AppSpaceInicio')
+
+    clase_regiones = ClaseRegion.objects.all()
+
+    contexto = {
+        'clases_regiones': clase_regiones,
+        'my_form': ClaseRegionForm(),
+    }
+    return render(request, 'AppSpace/clase_regiones.html', contexto)
 

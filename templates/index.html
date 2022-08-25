@@ -41,6 +41,17 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
+                            <a class="nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle" href="#" id="navbarDropdownMenuLink_Estrellas" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Estrellas
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Estrellas">
+                                <a class="dropdown-item" href="{% url 'AppSpaceEstrellas' %}">Crear Estrella</a>
+                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Buscar Estrella</a>
+                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Editar Estrella</a>
+                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Eliminar Estrella</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
                             <a class="nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle" href="#" id="navbarDropdownMenuLink_Planetas" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Planetas
                             </a>
@@ -67,9 +78,9 @@
                                 Caracteristicas
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Caracteristicas">
-                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Clase Estrella</a>
-                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Clase Planeta</a>
-                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Clase Región</a>
+                                <a class="dropdown-item" href="{% url 'AppSpaceClaseEstrella' %}">Clase Estrella</a>
+                                <a class="dropdown-item" href="{% url 'AppSpacePlaneta' %}">Clase Planeta</a>
+                                <a class="dropdown-item" href="{% url 'AppSpaceClaseRegion' %}">Clase Región</a>
                             </div>
                         </li>
                     </ul>
