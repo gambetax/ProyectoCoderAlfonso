@@ -29,9 +29,49 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'AppSpaceInicio' %}">Home</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'AppSpaceSistema' %}">Sistemas Planetarios</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'AppSpacePlanetas' %}">Planetas</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'AppSpaceHabitantes' %}">Habitantes</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle" href="#" id="navbarDropdownMenuLink_Sistemas" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Sistemas Planetarios
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Sistemas">
+                                <a class="dropdown-item" href="{% url 'AppSpaceSistema' %}">Crear Sistema</a>
+                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Buscar Sistema</a>
+                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Editar Sistema</a>
+                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Eliminar Sistema</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle" href="#" id="navbarDropdownMenuLink_Planetas" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Planetas
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Planetas">
+                                <a class="dropdown-item" href="{% url 'AppSpacePlanetas' %}">Crear Planeta</a>
+                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Buscar Planeta</a>
+                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Editar Planeta</a>
+                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Eliminar Planeta</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle" href="#" id="navbarDropdownMenuLink_Habitantes" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Habitantes
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Habitantes">
+                                <a class="dropdown-item" href="{% url 'AppSpaceHabitantes' %}">Crear Habitante</a>
+                                <a class="dropdown-item" href="{% url 'AppSpaceBuscarHabitantes'%}">Buscar Habitante</a>
+                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Editar Habitante</a>
+                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Eliminar Habitante</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle" href="#" id="navbarDropdownMenuLink_Caracteristicas" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Caracteristicas
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Caracteristicas">
+                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Clase Estrella</a>
+                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Clase Planeta</a>
+                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Clase Región</a>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -49,10 +89,11 @@
                 </div>
             </div>
         </header>
-
-        {% block body %}
-            No hay nada para mostrar
-        {% endblock %}
+        <div>
+            {% block body %}
+                No hay nada para mostrar
+            {% endblock %}
+        </div>
 
 
         <!-- Main Content-->
@@ -62,8 +103,8 @@
                     <!-- Post preview-->
                     <div class="post-preview">
                         <a href="post.html">
-                            <h2 class="post-title">Man must explore, and this is exploration at its greatest</h2>
-                            <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>
+                            <h2 class="post-title">Title</h2>
+                            <h3 class="post-subtitle">Subtitle</h3>
                         </a>
                         <p class="post-meta">
                             Posted by
@@ -75,7 +116,7 @@
                     <hr class="my-4" />
                     <!-- Post preview-->
                     <div class="post-preview">
-                        <a href="post.html"><h2 class="post-title">I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.</h2></a>
+                        <a href="post.html"><h2 class="post-title">Another Title</h2></a>
                         <p class="post-meta">
                             Posted by
                             <a href="#!">Start Bootstrap</a>
@@ -87,8 +128,8 @@
                     <!-- Post preview-->
                     <div class="post-preview">
                         <a href="post.html">
-                            <h2 class="post-title">Science has not yet mastered prophecy</h2>
-                            <h3 class="post-subtitle">We predict too much for the next year and yet far too little for the next ten.</h3>
+                            <h2 class="post-title">Another Title</h2>
+                            <h3 class="post-subtitle">Another Subtitle</h3>
                         </a>
                         <p class="post-meta">
                             Posted by
@@ -140,7 +181,7 @@
                                 </a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#!">
+                                <a href="https://github.com/gambetax">
                                     <span class="fa-stack fa-lg">
                                         <i class="fas fa-circle fa-stack-2x"></i>
                                         <i class="fab fa-github fa-stack-1x fa-inverse"></i>

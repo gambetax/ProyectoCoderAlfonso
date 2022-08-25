@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+
+{% block title %}Buscar Habitantes{% endblock %}
+
+{% block body %}
+
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ my_form.as_p }}
+
+        <input type="submit" value="Buscar por nombre y apellido">
+
+    </form>
+
+    {% if cursos %}
+        <h4>Los Habitantes son:</h4>
+        {% for habitante in habitantes %}
+            <p>Habitante {{habitante.id}}: nombre {{ curso.nombre }} apellido {{ curso.camada }}</p>
+            <br>
+        {% endfor %}
+    {% else %}
+        <h6>No hay habitante para el filtro seleccionado</h6>
+    {% endif %}
+
+
+
+{% endblock %}

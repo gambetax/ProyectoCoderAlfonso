@@ -1,23 +1,21 @@
 {% extends 'index.html' %}
 
-{% block title %} Habitantes {% endblock %}
+{% block title %} Crear Planetas {% endblock %}
 
 {% block body %}
 
     <form action="" method="POST">
 
-        <div class="div_habitantes">
+        <div class="div_crud">
             {% csrf_token %}
             {{ my_form.as_p }}
-
             <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Enviar</button>
         </div>
-
     </form>
 
-    <h5>Habitantes existentes:</h5>
-    {% for key, value in habitantes.items %}
-        <p>Habitante: {{ key }} </p>
+    <h5>Planetas existentes:</h5>
+    {% for key, value in planetas.items %}
+        <p>Planeta: {{ key }} </p>
         <p>Tiene como nombre {{ value }}</p>
     {% endfor %}
 

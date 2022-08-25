@@ -1,7 +1,8 @@
 from django import forms
 
 from .models import models
-from AppSpace.models import Planeta
+from AppSpace.models import Planeta, ClasePlaneta, SistemaPlanetario, Estrella, ClaseEstrella
+
 
 ESTRELLA_CHOICES = [
         ('O','≥ 33000 K','azul'),
@@ -27,10 +28,21 @@ class SistemaPlanetarioForm(forms.Form):
     clase_estrella = forms.ChoiceField(choices=ESTRELLA_CHOICES)
 
 class EstrellaForm(forms.Form):
-    pass
+    nombre = forms.CharField(max_length=40)
+    clase_estrella = forms.ModelChoiceField(queryset=ClaseEstrella.objects.all())
+    temperatura_media = models.IntegerField()
+    sistema_planetario = forms.ModelChoiceField(queryset=SistemaPlanetario.objects.all())
 
 class PlanetaForm(forms.Form):
-    pass
+    nombre = forms.CharField(max_length=40)
+    clase_planeta = forms.ModelChoiceField(queryset=ClasePlaneta.objects.all())
+    regiones = forms.IntegerField()
+    habitantes = forms.IntegerField()
+    satelites_naturales = forms.IntegerField()
+    satelites_artificiales = forms.IntegerField()
+    temperatura_media = forms.FloatField()
+    estrella = forms.ModelChoiceField(queryset=Estrella.objects.all())
+    sistema_planetario = forms.ModelChoiceField(queryset=SistemaPlanetario.objects.all())
 
 class HabitanteForm(forms.Form):
 
@@ -41,3 +53,20 @@ class HabitanteForm(forms.Form):
     planeta_natal = forms.ModelChoiceField(queryset=Planeta.objects.all()) #Se debió utilizar un modelChoiceField para traer con un queryset la consulta al listado de Planetas
     habitando_planeta = forms.ModelChoiceField(queryset=Planeta.objects.all())
 
+class BuscarHabitanteForm(forms.Form):
+    nombre = forms.CharField(max_length=40)
+    apellido = forms.CharField(max_length=40)
+
+
+class ClasePlanetaForm(forms.Form):
+    clase_planeta = forms.CharField(max_length=50)
+    grupo_planeta = forms.CharField(max_length=50)
+    descripcion = forms.CharField(max_length=250)
+
+class ClaseRegionForm(forms.Form):
+    clase_region = forms.CharField(max_length=50)
+    descripcion = forms.CharField(max_length=250)
+
+class ClaseEstrellForm(forms.Form):
+    clase_estrella = models.CharField(max_length=100)
+    descripcion = models.CharField(max_length=250)

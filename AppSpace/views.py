@@ -3,11 +3,51 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.template import loader
 from AppSpace.models import SistemaPlanetario,Estrella,Planeta,Habitante
-from AppSpace.forms import SistemaPlanetarioForm,HabitanteForm
+from AppSpace.forms import SistemaPlanetarioForm
+from AppSpace.forms import HabitanteForm, BuscarHabitanteForm
+from AppSpace.forms import EstrellaForm, ClaseEstrellForm
+from AppSpace.forms import PlanetaForm, ClasePlanetaForm, ClaseRegionForm
 
 # Create your views here.
 def inicio(request):
     return render(request, 'index.html')
+
+# CRUD : CREATE, READ, UPDATE, DELETE
+
+# SISTEMA PLANETARIO : CREATE
+# SISTEMA PLANETARIO :
+# SISTEMA PLANETARIO :
+# SISTEMA PLANETARIO :
+
+# ESTRELLAS : CREATE
+# ESTRELLAS :
+# ESTRELLAS :
+# ESTRELLAS :
+
+# PLANETAS : CREATE
+# PLANETAS :
+# PLANETAS :
+# PLANETAS :
+
+# HABITANTES : CREATE
+# HABITANTES : READ
+# HABITANTES :
+# HABITANTES :
+
+# CLASE ESTRELLA :
+# CLASE ESTRELLA :
+# CLASE ESTRELLA :
+# CLASE ESTRELLA :
+
+# CLASE PLANETA :
+# CLASE PLANETA :
+# CLASE PLANETA :
+# CLASE PLANETA :
+
+# CLASE REGION:
+# CLASE REGION:
+# CLASE REGION:
+# CLASE REGION:
 
 def sistema_planetario(request):
     if request.method == 'POST':
@@ -26,9 +66,9 @@ def sistema_planetario(request):
     sistema_estrellas= SistemaPlanetarioForm()
     contexto = {
         'sistemas' : sistema_estrellas,
-        'my_form' : my_form,
+        'my_form' : SistemaPlanetarioForm(),
     }
-    return render(request,'AppSpace/AppSpaceSistema')
+    return render(request,'AppSpace/sistemas/sistema.html',contexto)
 
 def estrellas(request):
     if request.method == 'POST':
@@ -50,16 +90,42 @@ def estrellas(request):
     estrella= Estrella.objects.all()
     contexto = {
         'estrella' : estrella,
-        'my_form' : my_form,
+        'my_form' : EstrellaForm(),
     }
-    return render(request,'AppSpace/AppSpaceEstrella')
-
+    return render(request,'AppSpace/estrellas/estrella.html')
 
 def planetas(request):
-    pass
+    if request.method == 'POST':
+        my_form = PlanetaForm(request.POST)
+
+        if my_form.is_valid():
+
+            data = my_form.cleaned_data
+
+            form_data = Planeta(
+                nombre=data.get('nombre'),
+                clase_planeta=data.get('clase_planeta'),
+                regiones=data.get('regiones'),
+                habitantes=data.get('habitantes'),
+                satelites_naturales=data.get('satelites_naturales'),
+                satelites_artificiales=data.get('satelites_artificiales'),
+                temperatura_media=data.get('temperatura_media'),
+                estrella=data.get('estrella'),
+                sistema_planetario=data.get('sistema_planetario'),
+            )
+            form_data.save()
+        else:
+            redirect('AppSpaceInicio')
+
+    planetas = Planeta.objects.all()
+
+    contexto = {
+        'habitante' : habitantes,
+        'my_form' : PlanetaForm(),
+    }
+    return render(request,'AppSpace/planetas/planetas.html',contexto)
 
 def habitantes(request):
-
 
     if request.method == 'POST':
         my_form = HabitanteForm(request.POST)
@@ -86,4 +152,20 @@ def habitantes(request):
         'habitante' : habitantes,
         'my_form' : HabitanteForm(),
     }
-    return render(request,'AppSpace/habitantes.html',contexto)
+    return render(request,'AppSpace/habitantes/habitantes.html',contexto)
+
+def buscar_habitantes(request):
+
+    habitantes = []
+    if request.method == "POST":
+        nombre = request.POST.get('nombre')
+        apellido = request.POST.get ('apellido')
+        habitantes = Habitante.objects.filter(nombre__icontains=nombre,apellido__icontains=apellido)
+
+    contexto = {
+        'my_form': BuscarHabitanteForm(),
+        'habitantes': habitantes
+    }
+
+    return render(request,'AppSpace/habitantes/buscar_habitantes.html', contexto)
+
