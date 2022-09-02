@@ -56,6 +56,7 @@ class HabitanteForm(forms.Form):
 
 class BuscarHabitanteForm(forms.Form):
     apellido = forms.CharField(max_length=40)
+    asjdkal = forms.ImageField()
 
 class ClaseEstrellForm(forms.Form):
     clase_estrella = forms.CharField(max_length=2)

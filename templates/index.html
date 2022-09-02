@@ -105,7 +105,11 @@
                 No hay nada para mostrar
             {% endblock %}
         </div>
-
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endif %}
 
         <!-- Main Content-->
         <div class="container px-4 px-lg-5">
