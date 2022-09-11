@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+
+{% block title %}Buscar Planetas{% endblock %}
+
+{% block body %}
+
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ my_form.as_p }}
+
+        <input type="submit" value="Buscar Planeta">
+
+    </form>
+
+    {% if planetas %}
+        {% if planetas|length > 1 %}
+            <h4>Planetas:</h4>
+        {% else %}
+            <h4>Planeta:</h4>
+        {% endif %}
+        {% for planeta in planetas %}
+            <p>{{planeta.id}}: Nombre : {{ planeta.nombre }} | Clase de Planeta : {{ planeta.clase_planeta }} |
+            Población : {{ planeta.habitantes }} | Satelites Naturales : {{ planeta.satelites_naturales }} |
+            Satelites Artificiales : {{ planeta.satelites_artificiales }} | {{ planeta.estrella }} |
+            {{ planeta.sistema_planetario }}</p>
+        {% endfor %}
+    {% else %}
+        <h6>No hay habitante para el filtro seleccionado</h6>
+    {% endif %}
+
+
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+
+{% block title %} Registrarse {% endblock %}
+
+{% block body %}
+
+    <h3 class="text-center">Regístrate</h3>
+    <form class="container text-center .col-sm-2" action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="container text-center">
+            <div>
+                <input type="submit" class="btn btn-dark" value="{{ name_submit }}"></input>
+            </div>
+        </div>
+    </form>
+
+
+{% endblock %}

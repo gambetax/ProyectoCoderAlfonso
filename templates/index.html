@@ -7,7 +7,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Space Planets</title>
+        <title>{% block title %}Space Planets{% endblock %}</title>
+
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -17,77 +18,8 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'AppSpace/css/styles.css' %}" rel="stylesheet" />
     </head>
+    <!-- Page Header-->
     <body>
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="index.html">Space Planets</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'AppSpaceInicio' %}">Home</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle" href="#" id="navbarDropdownMenuLink_Sistemas" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Sistemas Planetarios
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Sistemas">
-                                <a class="dropdown-item" href="{% url 'AppSpaceSistema' %}">Crear Sistema</a>
-                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Buscar Sistema</a>
-                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Editar Sistema</a>
-                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Eliminar Sistema</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle" href="#" id="navbarDropdownMenuLink_Estrellas" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Estrellas
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Estrellas">
-                                <a class="dropdown-item" href="{% url 'AppSpaceEstrellas' %}">Crear Estrella</a>
-                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Buscar Estrella</a>
-                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Editar Estrella</a>
-                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Eliminar Estrella</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle" href="#" id="navbarDropdownMenuLink_Planetas" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Planetas
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Planetas">
-                                <a class="dropdown-item" href="{% url 'AppSpacePlanetas' %}">Crear Planeta</a>
-                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Buscar Planeta</a>
-                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Editar Planeta</a>
-                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Eliminar Planeta</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle" href="#" id="navbarDropdownMenuLink_Habitantes" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Habitantes
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Habitantes">
-                                <a class="dropdown-item" href="{% url 'AppSpaceHabitantes' %}">Crear Habitante</a>
-                                <a class="dropdown-item" href="{% url 'AppSpaceBuscarHabitantes'%}">Buscar Habitante</a>
-                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Editar Habitante</a>
-                                <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Eliminar Habitante</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle" href="#" id="navbarDropdownMenuLink_Caracteristicas" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Caracteristicas
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Caracteristicas">
-                                <a class="dropdown-item" href="{% url 'AppSpaceClaseEstrella' %}">Clase Estrella</a>
-                                <a class="dropdown-item" href="{% url 'AppSpacePlaneta' %}">Clase Planeta</a>
-                                <a class="dropdown-item" href="{% url 'AppSpaceClaseRegion' %}">Clase Región</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Page Header-->
         <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -100,10 +32,19 @@
                 </div>
             </div>
         </header>
-        <div>
-            {% block body %}
-                No hay nada para mostrar
-            {% endblock %}
+        <!-- Navigation-->
+        {% include 'bases/navigation.html' %}
+
+        <!-- Messages -->
+        {% include 'bases/messages.html' %}
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-xl-10 justify-content-center">
+                    {% block body %}
+                    {% endblock %}
+                </div>
+            </div>
+
         </div>
         {% if messages %}
             {% for message in messages %}

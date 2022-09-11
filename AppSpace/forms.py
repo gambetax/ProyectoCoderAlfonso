@@ -54,10 +54,6 @@ class HabitanteForm(forms.Form):
     planeta_natal = forms.ModelChoiceField(queryset=Planeta.objects.all()) #Se debió utilizar un modelChoiceField para traer con un queryset la consulta al listado de Planetas
     habitando_planeta = forms.ModelChoiceField(queryset=Planeta.objects.all())
 
-class BuscarHabitanteForm(forms.Form):
-    apellido = forms.CharField(max_length=40)
-    asjdkal = forms.ImageField()
-
 class ClaseEstrellForm(forms.Form):
     clase_estrella = forms.CharField(max_length=2)
     temperatura = forms.CharField(max_length=50)
@@ -72,3 +68,18 @@ class ClaseRegionForm(forms.Form):
     clase_region = forms.CharField(max_length=50)
     descripcion = forms.CharField(max_length=250, required=False)
 
+
+#FORMULARIOS PARA BUSQUEDA
+
+class BuscarSistemaForm(forms.Form):
+    nombre = forms.CharField(max_length=40,required=False)
+
+class BuscarEstrellaForm(forms.Form):
+    nombre = forms.CharField(max_length=40,required=False)
+
+class BuscarPlanetaForm(forms.Form):
+    nombre = forms.CharField(max_length=40,required=False)
+
+
+class BuscarHabitanteForm(forms.Form):
+    apellido = forms.CharField(max_length=40,required=False)

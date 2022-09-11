@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+
+{% block title %}Buscar Estrellas{% endblock %}
+
+{% block body %}
+
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ my_form.as_p }}
+
+        <input type="submit" value="Buscar Estrella">
+
+    </form>
+
+    {% if estrellas %}
+        {% if estrellas|length > 1 %}
+            <h4>Estrellas:</h4>
+        {% else %}
+            <h4>Estrella:</h4>
+        {% endif %}
+        {% for estrella in estrellas %}
+            <p>{{estrella.id}}: Nombre: {{ estrella.nombre }} | Clase Estrella: {{ estrella.clase_estrella }} |
+                Temperatura Media: {{ estrella.temperatura_media }} | Pertenece al {{ estrella.sistema_planetario }} </p>
+        {% endfor %}
+    {% else %}
+        <h6>No hay estrella para el filtro seleccionado</h6>
+    {% endif %}
+
+
+
+{% endblock %}

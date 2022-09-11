@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-s5&z$hd1+k#2uqh9+-celd%#-b%@$=^s@bc2r&j)qq&qov5ak-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['aqueous-sands-40930.herokuapp.com']
+ALLOWED_HOSTS = ['aqueous-sands-40930.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -131,7 +131,7 @@ STATIC_ROOT = BASE_DIR / 'static'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #Login
-LOGIN_URL = 'UserLogin'
+LOGIN_URL = '/user/login'
 
 #images
 MEDIA_URL = '/media/'

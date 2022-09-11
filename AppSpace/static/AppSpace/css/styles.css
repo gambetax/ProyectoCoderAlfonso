@@ -109,9 +109,12 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   line-height: 1.2;
 }
 
-.div_crud{
-  display:grid;
-
+.div_center{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    margin-top: 100px;
 }
 
 h1, .h1 {
@@ -138,6 +141,7 @@ h3, .h3 {
 @media (min-width: 1200px) {
   h3, .h3 {
     font-size: 1.75rem;
+
   }
 }
 

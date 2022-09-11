@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+
+{% block title %}Buscar Sistemas{% endblock %}
+
+{% block body %}
+
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ my_form.as_p }}
+
+        <input type="submit" value="Buscar Sistema">
+
+    </form>
+
+    {% if sistemas %}
+        {% if planetas|length > 1 %}
+            <h4>Sistemas:</h4>
+        {% else %}
+            <h4>Sistema:</h4>
+        {% endif %}
+        {% for sistema in sistemas %}
+            <p>{{sistema.id}}: Nombre: {{ sistema.nombre }} | Cantidad de Estrellas: {{ sistema.cant_estrellas }} |
+            Clase Estrella : {{ sistema.clase_estrella }} | Cantidad de Planetas: {{ sistema.cant_planetas }} </p>
+        {% endfor %}
+    {% else %}
+        <h6>No hay sistema para el filtro seleccionado</h6>
+    {% endif %}
+
+
+
+{% endblock %}

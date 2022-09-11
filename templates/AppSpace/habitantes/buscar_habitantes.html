@@ -9,15 +9,14 @@
         {% csrf_token %}
         {{ my_form.as_p }}
 
-        <input type="submit" value="Buscar por nombre y apellido">
+        <input type="submit" value="Buscar Habitante">
 
     </form>
 
     {% if habitantes %}
         <h4>Los Habitantes son:</h4>
         {% for habitante in habitantes %}
-            <p>{{habitante.id}}: nombre {{ habitante.nombre }} apellido {{ habitante.apellido }} </p>
-            <br>
+            <p>{{habitante.id}}: Nombre : {{ habitante.nombre }} | Apellido : {{ habitante.apellido }} </p>
         {% endfor %}
     {% else %}
         <h6>No hay habitante para el filtro seleccionado</h6>

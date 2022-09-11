@@ -38,7 +38,7 @@ class SistemaPlanetario(models.Model):
     clase_estrella = models.ForeignKey(ClaseEstrella,on_delete=models.CASCADE)
 
     def __str__(self):
-        return f' Sistema Planetario : {self.nombre}'
+        return f' Sistema : {self.nombre}'
 
 class Estrella(models.Model):
     nombre = models.CharField(max_length=40)
@@ -47,7 +47,7 @@ class Estrella(models.Model):
     sistema_planetario = models.ForeignKey(SistemaPlanetario, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f' Estrella : {self.nombre} | {self.nombre}'
+        return f' Estrella : {self.nombre}'
 class Planeta(models.Model):
     nombre = models.CharField(max_length=40)
     clase_planeta = models.ForeignKey(ClasePlaneta, blank=False,null=False, on_delete=models.CASCADE, default=0)
