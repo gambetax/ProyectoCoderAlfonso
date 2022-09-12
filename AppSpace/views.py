@@ -20,7 +20,7 @@ def inicio(request):
 
 # SISTEMA PLANETARIO : CREATE
 # SISTEMA PLANETARIO : READ
-# SISTEMA PLANETARIO :
+# SISTEMA PLANETARIO : EDIT
 # SISTEMA PLANETARIO :
 
 # ESTRELLAS : CREATE
@@ -54,7 +54,46 @@ def inicio(request):
 # CLASE REGION:
 
 
-def sistema_planetario(request):
+#VISTAR PARA VER LISTADOS COMPLETOS
+
+def ver_sistemas(request):
+    sistemas = SistemaPlanetario.objects.all()
+
+    contexto = {
+        'sistemas': sistemas,
+    }
+    return render(request,'AppSpace/sistemas/sistemas.html', contexto)
+
+def ver_estrellas(request):
+    estrellas = Estrella.objects.all()
+
+    contexto = {
+        'estrellas': estrellas,
+    }
+    return render(request, 'AppSpace/estrellas/estrellas.html', contexto)
+
+
+def ver_planetas(request,sistema_planetario):
+    planetas = Planeta.objects.filter(sistema_planetario=sistema_planetario)
+
+    contexto = {
+        'planetas': planetas,
+    }
+    return render(request, 'AppSpace/planetas/planetas.html', contexto)
+
+
+def ver_habitantes(request,habitando_planeta):
+    habitantes = Habitante.objects.filter(habitando_planeta=habitando_planeta)
+
+    contexto = {
+        'habitantes': habitantes,
+    }
+    return render(request, 'AppSpace/habitantes/habitantes.html', contexto)
+
+#VISTAS PARA CREAR
+
+@login_required()
+def crear_sistema_planetario(request):
     if request.method == 'POST':
         my_form = SistemaPlanetarioForm(request.POST)
 
@@ -62,7 +101,7 @@ def sistema_planetario(request):
             data = my_form.cleaned_data
 
             form_data = SistemaPlanetario(
-                nombre = data.get('sistema'),
+                nombre = data.get('nombre'),
                 cant_estrellas= data.get('cant_estrellas'),
                 cant_planetas = data.get('cant_planetas'),
                 clase_estrella= data.get('clase_estrella')
@@ -76,9 +115,10 @@ def sistema_planetario(request):
         'sistemas' : sistema_estrellas,
         'my_form' : SistemaPlanetarioForm(),
     }
-    return render(request,'AppSpace/sistemas/sistemas.html',contexto)
+    return render(request, 'AppSpace/sistemas/crear_sistema.html', contexto)
 
-def estrellas(request):
+@login_required()
+def crear_estrellas(request):
     if request.method == 'POST':
         my_form = EstrellaForm(request.POST)
 
@@ -102,7 +142,8 @@ def estrellas(request):
     }
     return render(request,'AppSpace/estrellas/estrellas.html', contexto)
 
-def planetas(request):
+@login_required()
+def crear_planetas(request):
     if request.method == 'POST':
         my_form = PlanetaForm(request.POST)
 
@@ -133,7 +174,7 @@ def planetas(request):
     }
     return render(request,'AppSpace/planetas/planetas.html',contexto)
 @login_required
-def habitantes(request):
+def crear_habitantes(request):
 
     if request.method == 'POST':
         my_form = HabitanteForm(request.POST)
@@ -162,13 +203,9 @@ def habitantes(request):
     }
     return render(request,'AppSpace/habitantes/habitantes.html',contexto)
 
-
-
 # CARACTERISTICAS DE ESTRELLAS, PLANETAS Y REGIONES
 
-
-
-@permission_required
+@login_required
 def crear_clase_estrella(request):
     if request.method == 'POST':
         my_form = ClaseEstrellForm(request.POST)
@@ -194,7 +231,7 @@ def crear_clase_estrella(request):
     }
     return render(request, 'AppSpace/clase_estrellas.html', contexto)
 
-@permission_required
+@login_required
 def crear_clase_planeta(request):
     if request.method == 'POST':
         my_form = ClasePlanetaForm(request.POST)
@@ -220,7 +257,7 @@ def crear_clase_planeta(request):
     }
     return render(request, 'AppSpace/clase_planetas.html', contexto)
 
-@permission_required('')
+@login_required
 def crear_clase_region(request):
     if request.method == 'POST':
         my_form = ClaseRegionForm(request.POST)
@@ -304,4 +341,139 @@ def buscar_habitantes(request):
     }
 
     return render(request,'AppSpace/habitantes/buscar_habitantes.html', contexto)
+
+#MVISTAS PARA EDITAR
+
+def editar_sistema(request, nombre):
+
+    sistema = SistemaPlanetario.objects.get(nombre=nombre)
+
+    if request.method == 'POST':
+        my_form = SistemaPlanetarioForm(request.POST)
+
+        if my_form.is_valid():
+            data = my_form.cleaned_data
+
+            sistema.nombre = data.get('nombre')
+            sistema.cant_estrellas = data.get('cant_estrellas')
+            sistema.cant_planetas = data.get('cant_planetas')
+            sistema.clase_estrella = data.get('clase_estrella')
+
+            sistema.save()
+
+            return redirect('AppSpaceSistema')
+
+    form_Space = SistemaPlanetarioForm(initial={
+        'sistema': sistema.nombre,
+        'cant_estrellas': sistema.cant_estrellas,
+        'cant_planetas' : sistema.cant_planetas,
+        'clase_estrella' : sistema.clase_estrella,
+    })
+
+    contexto = {
+        'sistema': form_Space,
+    }
+
+    return render(request, 'AppSpace/sistemas/editar_sistema.html', contexto)
+
+def editar_estrellas(request, nombre):
+
+    estrella = Estrella.objects.filter(nombre=nombre)
+
+    if request.method == 'POST':
+        my_form = EstrellaForm(request.POST)
+
+        if my_form.is_valid():
+            data = my_form.cleaned_data
+
+            estrella.nombre = data.get('nombre')
+            estrella.clase_estrella = data.get('clase_estrella')
+            estrella.temperatura_media = data.get('temperatura_media')
+            estrella.sistema_planetario = data.get('sistema_planetario')
+
+            estrella.save()
+
+            return redirect('AppSpaceSistema')
+
+    form_Space = EstrellaForm(initial={
+        'nombre': estrella.nombre ,
+        'clase_estrella': estrella.clase_estrella,
+        'temperatura_media' : estrella.temperatura_media,
+        'sistema_planetario' : estrella.sistema_planetario,})
+
+    contexto = {
+        'sistema_form': form_Space,
+    }
+
+    return render(request, 'AppCoder/sistemas/editar_estrella.html', contexto)
+
+def editar_estrellas(request, nombre):
+
+    estrella = Estrella.objects.filter(nombre=nombre)
+
+    if request.method == 'POST':
+        my_form = EstrellaForm(request.POST)
+
+        if my_form.is_valid():
+            data = my_form.cleaned_data
+
+            estrella.nombre = data.get('nombre')
+            estrella.clase_estrella = data.get('clase_estrella')
+            estrella.temperatura_media = data.get('temperatura_media')
+            estrella.sistema_planetario = data.get('sistema_planetario')
+
+            estrella.save()
+
+            return redirect('AppSpaceSistema')
+
+    form_Space = EstrellaForm(initial={
+        'nombre': estrella.nombre ,
+        'clase_estrella': estrella.clase_estrella,
+        'temperatura_media' : estrella.temperatura_media,
+        'sistema_planetario' : estrella.sistema_planetario,})
+
+    contexto = {
+        'sistema_form': form_Space,
+    }
+
+    return render(request, 'AppCoder/sistemas/editar_estrella.html', contexto)
+
+def editar_estrellas(request, nombre):
+
+    estrella = Estrella.objects.filter(nombre=nombre)
+
+    if request.method == 'POST':
+        my_form = EstrellaForm(request.POST)
+
+        if my_form.is_valid():
+            data = my_form.cleaned_data
+
+            estrella.nombre = data.get('nombre')
+            estrella.clase_estrella = data.get('clase_estrella')
+            estrella.temperatura_media = data.get('temperatura_media')
+            estrella.sistema_planetario = data.get('sistema_planetario')
+
+            estrella.save()
+
+            return redirect('AppSpaceSistema')
+
+    form_Space = EstrellaForm(initial={
+        'nombre': estrella.nombre ,
+        'clase_estrella': estrella.clase_estrella,
+        'temperatura_media' : estrella.temperatura_media,
+        'sistema_planetario' : estrella.sistema_planetario,})
+
+    contexto = {
+        'sistema_form': form_Space,
+    }
+
+    return render(request, 'AppCoder/sistemas/editar_estrella.html', contexto)
+
+#VISTAS PARA ELIMINAR
+
+def eliminar_sistema(request, camada):
+
+
+
+    return render(request, 'AppCoder/sistemas/editar_estrella.html', contexto)
 

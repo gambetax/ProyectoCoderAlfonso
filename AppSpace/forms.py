@@ -23,7 +23,7 @@ IDIOMA_CHOICE = [
 ]
 
 class SistemaPlanetarioForm(forms.Form):
-    sistema = forms.CharField(max_length=40)
+    nombre = forms.CharField(max_length=40)
     cant_estrellas = forms.IntegerField()
     cant_planetas = forms.IntegerField()
     clase_estrella = forms.ModelChoiceField(queryset=ClaseEstrella.objects.all())

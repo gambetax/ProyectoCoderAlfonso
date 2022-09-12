@@ -1,24 +1,19 @@
 {% extends 'index.html' %}
 
-{% block title %} Crear Sistema {% endblock %}
+{% block title %} Sistemas {% endblock %}
 
 {% block body %}
-
-    <form action="" method="POST">
-
-        <div class="div_crud">
-            {% csrf_token %}
-            {{ my_form.as_p }}
-
-            <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Crear</button>
-        </div>
-
-    </form>
-
-    <h5>Sistemas existentes:</h5>
-    {% for key, value in sistemas.items %}
-        <p>Sistema: {{ key }} </p>
-        <p>Tiene como nombre Sistema {{ value }}</p>
+    {% if sistemas|length > 1 %}
+        <h4>Sistemas existentes:</h4>
+    {% else %}
+        <h4>Sistema existente:</h4>
+    {% endif %}
+    {% for sistema in sistemas %}
+        <p>
+            Sistema: {{ sistema.nombre }}
+            <a href="{% url 'AppSpaceEditarSistema' sistema.nombre %}"><img src="'AppSpace/css/icons/pencil-square.svg'" alt="Bootstrap" width="32" height="32">Editar</a>
+            <a></a>
+        </p>
     {% endfor %}
 
 {% endblock %}

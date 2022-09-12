@@ -16,10 +16,11 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Sistemas">
                                 {% if request.user.is_staff %}
-                                    <a class="dropdown-item" href="{% url 'AppSpaceSistema' %}">Crear Sistema</a>
+                                    <a class="dropdown-item" href="{% url 'AppSpaceCrearSistema' %}">Crear Sistema</a>
                                     <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Editar Sistema</a>
                                     <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Eliminar Sistema</a>
                                 {% endif %}
+                                    <a class="dropdown-item" href="{% url 'AppSpaceSistema' %}">Sistemas</a>
                                     <a class="dropdown-item" href="{% url 'AppSpaceBuscarSistemas' %}">Buscar Sistema</a>
 
 
