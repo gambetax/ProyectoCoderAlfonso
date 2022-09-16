@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fc9dee6-763e-4aa3-bf36-fdd7994f8d89" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/AppSpace/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/AppSpace/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppSpace/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/AppSpace/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/AppSpace/planetas/planetas.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AppSpace/planetas/planetas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/AppSpace/sistemas/buscar_sistemas.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AppSpace/sistemas/buscar_sistemas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bases/navigation.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bases/navigation.html" afterDir="false" />
-    </list>
+    <list default="true" id="2fc9dee6-763e-4aa3-bf36-fdd7994f8d89" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -236,7 +229,7 @@
       <workItem from="1662877906000" duration="269000" />
       <workItem from="1663343365453" duration="867000" />
       <workItem from="1663344276577" duration="274000" />
-      <workItem from="1663344554222" duration="3908000" />
+      <workItem from="1663344554222" duration="4344000" />
     </task>
     <servers />
   </component>
