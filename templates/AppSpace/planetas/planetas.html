@@ -1,22 +1,28 @@
 {% extends 'index.html' %}
 
-{% block title %} Crear Planetas {% endblock %}
+{% block title %} Planetas {% endblock %}
 
 {% block body %}
 
-    <form action="" method="POST">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ my_form.as_p }}
 
-        <div class="div_crud">
-            {% csrf_token %}
-            {{ my_form.as_p }}
-            <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Crear Planeta</button>
-        </div>
+        <input type="submit" value="Buscar por Sistema">
+
     </form>
 
-    <h5>Planetas existentes:</h5>
-    {% for key, value in planetas.items %}
-        <p>Planeta: {{ key }} </p>
-        <p>Tiene como nombre {{ value }}</p>
+    {% if planetas|length > 1 %}
+        <h4>Planetas existentes:</h4>
+    {% else %}
+        <h4>Planeta existente:</h4>
+    {% endif %}
+    {% for planeta in planetas %}
+        <p>
+            Planeta: {{ planeta.nombre }}
+            <!--<a href="% url 'AppSpaceEditarPlaneta' planeta.nombre %}"><img src="'AppSpace/css/icons/pencil-square.svg'" alt="Bootstrap" width="32" height="32">Editar</a>
+            <a></a>-->
+        </p>
     {% endfor %}
 
 {% endblock %}

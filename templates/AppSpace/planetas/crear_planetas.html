@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+{% block title %} Crear Planeta {% endblock %}
+
+{% block body %}
+
+    <form action="" method="POST">
+
+        <div class="div_crud">
+            {% csrf_token %}
+            {{ my_form.as_p }}
+            <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Crear</button>
+        </div>
+    </form>
+{% endblock %}

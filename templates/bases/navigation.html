@@ -15,15 +15,11 @@
                                 Sistemas Planetarios
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Sistemas">
-                                {% if request.user.is_staff %}
-                                    <a class="dropdown-item" href="{% url 'AppSpaceCrearSistema' %}">Crear Sistema</a>
-                                    <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Editar Sistema</a>
-                                    <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Eliminar Sistema</a>
-                                {% endif %}
                                     <a class="dropdown-item" href="{% url 'AppSpaceSistema' %}">Sistemas</a>
                                     <a class="dropdown-item" href="{% url 'AppSpaceBuscarSistemas' %}">Buscar Sistema</a>
-
-
+                                {% if request.user.is_staff %}
+                                    <a class="dropdown-item" href="{% url 'AppSpaceCrearSistema' %}">Crear Sistema</a>
+                                {% endif %}
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -31,13 +27,11 @@
                                 Estrellas
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Estrellas">
+                                <a class="dropdown-item" href="{% url 'AppSpaceEstrellas' %}">Estrellas</a>
+                                <a class="dropdown-item" href="{% url 'AppSpaceBuscarEstrellas' %}">Buscar Estrella</a>
                                 {% if request.user.is_staff %}
                                     <a class="dropdown-item" href="{% url 'AppSpaceEstrellas' %}">Crear Estrella</a>
-                                    <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Eliminar Estrella</a>
-                                    <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Editar Estrella</a>
                                 {% endif %}
-                                    <a class="dropdown-item" href="{% url 'AppSpaceBuscarEstrellas' %}">Buscar Estrella</a>
-
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -45,12 +39,12 @@
                                 Planetas
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Planetas">
+                                    <a class="dropdown-item" href="{% url 'AppSpacePlanetas' %}">Planetas</a>
+                                    <a class="dropdown-item" href="{% url 'AppSpaceBuscarPlanetas' %}">Buscar Planeta</a>
                                 {% if request.user.is_staff %}
                                     <a class="dropdown-item" href="{% url 'AppSpacePlanetas' %}">Crear Planeta</a>
-                                    <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Editar Planeta</a>
-                                    <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Eliminar Planeta</a>
                                 {% endif %}
-                                    <a class="dropdown-item" href="{% url 'AppSpaceBuscarPlanetas' %}">Buscar Planeta</a>
+
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -58,15 +52,12 @@
                                 Habitantes
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Habitantes">
+                                <a class="dropdown-item" href="{% url 'AppSpaceHabitantes'%}">Habitantes</a>
+                                <a class="dropdown-item" href="{% url 'AppSpaceBuscarHabitantes'%}">Buscar Habitante</a>
                                 {% if request.user.is_staff %}
-                                    <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Editar Habitante</a>
-                                    <a class="dropdown-item" href="{% url 'AppSpaceInicio' %}">Eliminar Habitante</a>
                                     <a class="dropdown-item" href="{% url 'AppSpaceHabitantes' %}">Crear Habitante</a>
                                 {% elif request.user.is_authenticated %}
                                     <a class="dropdown-item" href="{% url 'AppSpaceHabitantes' %}">Crear Habitante</a>
-                                    <a class="dropdown-item" href="{% url 'AppSpaceBuscarHabitantes'%}">Buscar Habitante</a>
-                                {% else %}
-                                    <a class="dropdown-item" href="{% url 'AppSpaceBuscarHabitantes'%}">Buscar Habitante</a>
                                 {% endif %}
                             </div>
                         </li>

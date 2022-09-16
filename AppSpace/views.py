@@ -7,7 +7,8 @@ from django.contrib.auth.decorators import login_required, permission_required
 from AppSpace.models import SistemaPlanetario,Estrella,Planeta,Habitante,ClasePlaneta, ClaseRegion, ClaseEstrella
 
 
-from AppSpace.forms import SistemaPlanetarioForm, BuscarSistemaForm, BuscarEstrellaForm, BuscarPlanetaForm
+from AppSpace.forms import SistemaPlanetarioForm, BuscarSistemaForm, BuscarEstrellaForm, BuscarPlanetaForm, \
+    BuscarPlanetaSistemaForm
 from AppSpace.forms import HabitanteForm, BuscarHabitanteForm
 from AppSpace.forms import EstrellaForm, ClaseEstrellForm
 from AppSpace.forms import PlanetaForm, ClasePlanetaForm, ClaseRegionForm
@@ -38,12 +39,12 @@ def inicio(request):
 # HABITANTES :
 # HABITANTES :
 
-# CLASE ESTRELLA :
+# CLASE ESTRELLA : CREATE
 # CLASE ESTRELLA :
 # CLASE ESTRELLA :
 # CLASE ESTRELLA :
 
-# CLASE PLANETA :
+# CLASE PLANETA : CREATE
 # CLASE PLANETA :
 # CLASE PLANETA :
 # CLASE PLANETA :
@@ -73,10 +74,16 @@ def ver_estrellas(request):
     return render(request, 'AppSpace/estrellas/estrellas.html', contexto)
 
 
-def ver_planetas(request,sistema_planetario):
-    planetas = Planeta.objects.filter(sistema_planetario=sistema_planetario)
+def ver_planetas(request):
+
+    planetas = []
+
+    if request.method == 'POST':
+        sistema_planetario = request.POST.get('sistema_planetario')
+        planetas = Planeta.objects.filter(sistema_planetario=sistema_planetario)
 
     contexto = {
+        'my_form' : BuscarPlanetaSistemaForm(),
         'planetas': planetas,
     }
     return render(request, 'AppSpace/planetas/planetas.html', contexto)
@@ -144,6 +151,7 @@ def crear_estrellas(request):
 
 @login_required()
 def crear_planetas(request):
+
     if request.method == 'POST':
         my_form = PlanetaForm(request.POST)
 
@@ -169,7 +177,7 @@ def crear_planetas(request):
     planetas = Planeta.objects.all()
 
     contexto = {
-        'habitante' : habitantes,
+        'planetas' : planetas,
         'my_form' : PlanetaForm(),
     }
     return render(request,'AppSpace/planetas/planetas.html',contexto)
