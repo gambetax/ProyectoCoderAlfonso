@@ -1,4 +1,5 @@
 import django.db
+from _testcapi import hamt
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.template import loader
@@ -8,7 +9,7 @@ from AppSpace.models import SistemaPlanetario,Estrella,Planeta,Habitante,ClasePl
 
 
 from AppSpace.forms import SistemaPlanetarioForm, BuscarSistemaForm, BuscarEstrellaForm, BuscarPlanetaForm, \
-    BuscarPlanetaSistemaForm
+    BuscarPlanetaSistemaForm, BuscarHabitantePlanetaForm
 from AppSpace.forms import HabitanteForm, BuscarHabitanteForm
 from AppSpace.forms import EstrellaForm, ClaseEstrellForm
 from AppSpace.forms import PlanetaForm, ClasePlanetaForm, ClaseRegionForm
@@ -89,10 +90,16 @@ def ver_planetas(request):
     return render(request, 'AppSpace/planetas/planetas.html', contexto)
 
 
-def ver_habitantes(request,habitando_planeta):
-    habitantes = Habitante.objects.filter(habitando_planeta=habitando_planeta)
+def ver_habitantes(request):
+
+    habitantes = []
+
+    if request.method == 'POST':
+        habitando_planeta = request.POST.get('habitando_planeta')
+        habitantes = Habitante.objects.filter(habitando_planeta__contains=habitando_planeta)
 
     contexto = {
+        'my_form' : BuscarHabitantePlanetaForm(),
         'habitantes': habitantes,
     }
     return render(request, 'AppSpace/habitantes/habitantes.html', contexto)
@@ -209,7 +216,7 @@ def crear_habitantes(request):
         'habitante' : habitantes,
         'my_form' : HabitanteForm(),
     }
-    return render(request,'AppSpace/habitantes/habitantes.html',contexto)
+    return render(request,'AppSpace/habitantes/crear_habitantes.html',contexto)
 
 # CARACTERISTICAS DE ESTRELLAS, PLANETAS Y REGIONES
 

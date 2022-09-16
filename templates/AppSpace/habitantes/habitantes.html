@@ -1,24 +1,28 @@
 {% extends 'index.html' %}
 
-{% block title %} Crear Habitantes {% endblock %}
+{% block title %} Habitantes {% endblock %}
 
 {% block body %}
 
-    <form action="" method="POST">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ my_form.as_p }}
 
-        <div class="div_crud">
-            {% csrf_token %}
-            {{ my_form.as_p }}
-
-            <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Crear</button>
-        </div>
+        <input type="submit" value="Buscar por Planeta">
 
     </form>
 
-    <h5>Habitantes existentes:</h5>
-    {% for key, value in habitantes.items %}
-        <p>Habitante: {{ key }} </p>
-        <p>Tiene como nombre {{ value }}</p>
+    {% if habitantes|length > 1 %}
+        <h4>Habitantes existentes:</h4>
+    {% else %}
+        <h4>Habitante existente:</h4>
+    {% endif %}
+    {% for habitante in habitantes %}
+        <p>
+            Habitante: {{ habitante.nombre }} {{ habitante.apellido }}
+            <!--<a href="% url 'AppSpaceEditarPlaneta' planeta.nombre %}"><img src="'AppSpace/css/icons/pencil-square.svg'" alt="Bootstrap" width="32" height="32">Editar</a>
+            <a></a>-->
+        </p>
     {% endfor %}
 
 {% endblock %}

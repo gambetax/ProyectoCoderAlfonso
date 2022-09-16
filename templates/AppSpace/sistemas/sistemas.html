@@ -1,4 +1,5 @@
 {% extends 'index.html' %}
+{% load bootstrap_icons %}
 
 {% block title %} Sistemas {% endblock %}
 
@@ -11,8 +12,7 @@
     {% for sistema in sistemas %}
         <p>
             Sistema: {{ sistema.nombre }}
-            <a href="{% url 'AppSpaceEditarSistema' sistema.nombre %}"><img src="'AppSpace/css/icons/pencil-square.svg'" alt="Bootstrap" width="32" height="32">Editar</a>
-            <a></a>
+            <a href="{% url 'AppSpaceEditarSistema' sistema.nombre %}"> <img src="{% bs_icon 'pencil-square' %}">Editar</a>
         </p>
     {% endfor %}
 

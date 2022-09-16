@@ -55,9 +55,9 @@
                                 <a class="dropdown-item" href="{% url 'AppSpaceHabitantes'%}">Habitantes</a>
                                 <a class="dropdown-item" href="{% url 'AppSpaceBuscarHabitantes'%}">Buscar Habitante</a>
                                 {% if request.user.is_staff %}
-                                    <a class="dropdown-item" href="{% url 'AppSpaceHabitantes' %}">Crear Habitante</a>
+                                    <a class="dropdown-item" href="{% url 'AppSpaceCrearHabitantes' %}">Crear Habitante</a>
                                 {% elif request.user.is_authenticated %}
-                                    <a class="dropdown-item" href="{% url 'AppSpaceHabitantes' %}">Crear Habitante</a>
+                                    <a class="dropdown-item" href="{% url 'AppSpaceCrearHabitantes' %}">Crear Habitante</a>
                                 {% endif %}
                             </div>
                         </li>

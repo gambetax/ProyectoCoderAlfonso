@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import models
+from .models import models, Habitante
 from AppSpace.models import Planeta, ClasePlaneta, SistemaPlanetario, Estrella, ClaseEstrella
 
 
@@ -71,20 +71,22 @@ class ClaseRegionForm(forms.Form):
 
 #FORMULARIOS PARA BUSQUEDA
 
-
-
 class BuscarSistemaForm(forms.Form):
     nombre = forms.CharField(max_length=40,required=False)
 
 class BuscarEstrellaForm(forms.Form):
     nombre = forms.CharField(max_length=40,required=False)
 
-class BuscarPlanetaForm(forms.Form):
-    nombre = forms.CharField(max_length=40,required=False)
-
+#PLANETAS
 class BuscarPlanetaSistemaForm(forms.Form):
     sistema_planetario = forms.ModelChoiceField(queryset=SistemaPlanetario.objects.all())
 
+class BuscarPlanetaForm(forms.Form):
+    nombre = forms.CharField(max_length=40,required=False)
 
+#HABITANTES
 class BuscarHabitanteForm(forms.Form):
     apellido = forms.CharField(max_length=40,required=False)
+
+class BuscarHabitantePlanetaForm(forms.Form):
+    habitando_planeta = forms.CharField(max_length=40,required=False)
