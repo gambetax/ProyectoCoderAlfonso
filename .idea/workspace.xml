@@ -6,19 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2fc9dee6-763e-4aa3-bf36-fdd7994f8d89" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppSpace/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/AppSpace/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AppSpace/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppSpace/migrations/0002_claseregion_delete_clase_region_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppSpace/migrations/0003_alter_claseplaneta_descripcion_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppSpace/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/AppSpace/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppSpace/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/AppSpace/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppSpace/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/AppSpace/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/AppSpace/estrellas/estrellas.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AppSpace/estrellas/estrellas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/AppSpace/habitantes/habitantes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AppSpace/habitantes/habitantes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/AppSpace/planetas/planetas.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AppSpace/planetas/planetas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/AppSpace/sistemas/sistemas.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AppSpace/sistemas/sistemas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bases/navigation.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bases/navigation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoCoderAlfonso/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProyectoCoderAlfonso/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +99,8 @@
       <workItem from="1663344276577" duration="274000" />
       <workItem from="1663344554222" duration="12442000" />
       <workItem from="1663517708025" duration="5323000" />
-      <workItem from="1663523344974" duration="1408000" />
+      <workItem from="1663523344974" duration="5292000" />
+      <workItem from="1663529359310" duration="397000" />
     </task>
     <servers />
   </component>
