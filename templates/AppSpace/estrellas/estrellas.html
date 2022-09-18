@@ -1,5 +1,6 @@
 {% extends 'index.html' %}
-{% load static %}
+
+{% load bootstrap_icons %}
 
 {% block title %} Sistemas {% endblock %}
 
@@ -12,8 +13,8 @@
     {% for estrella in estrellas %}
         <p>
             Estrella: {{ estrella.nombre }}
-            <a href="{% url 'AppSpaceEstrellas' sistema.nombre %}"><img src="{% static 'AppSpace/css/icons/pencil-square.svg' %}" alt="Bootstrap" width="32" height="32">Editar</a>
-            <a></a>
+            <a class="editar_eliminar" href="{% url 'AppSpaceEditarEstrella' estrella.nombre %}"><svg class="size_svg" src="{% bs_icon 'pencil-square' size='28px'  %}"></svg> Editar</a>
+            <a class="editar_eliminar" href="{% url 'AppSpaceEliminarEstrella' estrella.nombre %}"><svg class="size_svg" src="{% bs_icon 'x-square' size='28px'  %}"></svg> Eliminar </a>
         </p>
     {% endfor %}
 

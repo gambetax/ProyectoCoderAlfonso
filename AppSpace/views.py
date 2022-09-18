@@ -486,9 +486,14 @@ def editar_estrellas(request, nombre):
 
 #VISTAS PARA ELIMINAR
 
-def eliminar_sistema(request, camada):
+@login_required()
+def eliminar_sistema(request, nombre):
+
+    nombre = SistemaPlanetario.objects.get(nombre=nombre)
+    nombre.delete()
+
+    return redirect('AppSpaceSistema')
 
 
 
-    return render(request, 'AppCoder/sistemas/editar_estrella.html', contexto)
 

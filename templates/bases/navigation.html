@@ -1,17 +1,17 @@
        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="{% url 'AppSpaceInicio' %}">Space Planets</a>
+        <nav class="navbar navbar-expand-md navbar-light  " id="mainNav">
+            <div class="container ">
+                <a class="navbar-brand pb-4" href="{% url 'AppSpaceInicio' %}">Space Planets</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'AppSpaceInicio' %}">Home</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle" href="#" id="navbarDropdownMenuLink_Sistemas" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <ul class="navbar-nav py-lg-3 ">
+                        <li class="nav-item m-3"><a class="nav-link" href="{% url 'AppSpaceInicio' %}">Home</a></li>
+                        <li class="nav-item m-3 dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink_Sistemas" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Sistemas Planetarios
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Sistemas">
@@ -22,8 +22,8 @@
                                 {% endif %}
                             </div>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle" href="#" id="navbarDropdownMenuLink_Estrellas" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <li class="nav-item m-3 dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink_Estrellas" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Estrellas
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Estrellas">
@@ -34,8 +34,8 @@
                                 {% endif %}
                             </div>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle" href="#" id="navbarDropdownMenuLink_Planetas" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <li class="nav-item m-3 dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink_Planetas" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Planetas
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Planetas">
@@ -47,8 +47,8 @@
 
                             </div>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle" href="#" id="navbarDropdownMenuLink_Habitantes" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <li class="nav-item m-3 dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink_Habitantes" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Habitantes
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Habitantes">
@@ -62,8 +62,8 @@
                             </div>
                         </li>
                         {% if request.user.is_staff  %}
-                            <li class="nav-item dropdown">
-                                <a class="nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle" href="#" id="navbarDropdownMenuLink_Caracteristicas" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <li class="nav-item m-3 dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink_Caracteristicas" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Caracteristicas
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Caracteristicas">
@@ -73,20 +73,19 @@
                                 </div>
                             </li>
                         {% endif %}
-
-                        <li class="nav-item">
+                        <li class="nav-item m-3" >
                             {% if user.is_authenticated %}
-                                <h5>User: {{ user.get_username }}</h5>
-                                <img src="{{ user.avatar.imagen.url }}" alt="">
+                                <h6 class="nav-item"> User: {{ user.get_username }}</h6>
+                                <img class="nav-link" src="{{ user.avatar.imagen.url }}" alt="">
                         </li>
-                        <li class="nav-item">
-                            <a class="btn btn-dark" href="{% url 'UserLogout' %}">Logout</a>
+                        <li class="nav-item m-3">
+                            <a class="btn btn-dark btn-sm" href="{% url 'UserLogout' %}">Logout</a>
                         </li>
                             {% else %}
-                        <li class="nav-item">
+                        <li class="nav-item m-3">
                                 <div class="justify-content-between">
-                                    <a class="btn btn-dark" href="{% url 'UserLogin' %}">Login</a>
-                                    <a class="btn btn-dark" href="{% url 'UserRegister' %}">Registrarse</a>
+                                    <a class="btn btn-dark btn-sm" href="{% url 'UserLogin' %}">Login</a>
+                                    <a class="btn btn-dark btn-sm" href="{% url 'UserRegister' %}">Registrarse</a>
                                 </div>
                             {% endif %}
                         </li>

@@ -1,4 +1,5 @@
 {% extends 'index.html' %}
+{% load bootstrap_icons %}
 
 {% block title %} Habitantes {% endblock %}
 
@@ -20,6 +21,8 @@
     {% for habitante in habitantes %}
         <p>
             Habitante: {{ habitante.nombre }} {{ habitante.apellido }}
+            <a class="editar_eliminar" href="{% url 'AppSpaceEditarHabitante' habitante.nombre %}"><svg class="size_svg" src="{% bs_icon 'pencil-square' size='28px'  %}"></svg> Editar</a>
+            <a class="editar_eliminar" href="{% url 'AppSpaceEliminarHabitante' habitante.nombre %}"><svg class="size_svg" src="{% bs_icon 'x-square' size='28px'  %}"></svg> Eliminar </a>
             <!--<a href="% url 'AppSpaceEditarPlaneta' planeta.nombre %}"><img src="'AppSpace/css/icons/pencil-square.svg'" alt="Bootstrap" width="32" height="32">Editar</a>
             <a></a>-->
         </p>
