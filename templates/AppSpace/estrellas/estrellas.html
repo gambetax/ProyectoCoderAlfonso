@@ -13,8 +13,8 @@
     {% for estrella in estrellas %}
         <p>
             Estrella: {{ estrella.nombre }}
-            <a class="editar_eliminar" href="{% url 'AppSpaceEditarEstrella' estrella.id %}"><svg class="size_svg" src="{% bs_icon 'pencil-square' size='28px'  %}"></svg> Editar</a>
-            <a class="editar_eliminar" href="{% url 'AppSpaceEliminarEstrella' estrella.id %}"><svg class="size_svg" src="{% bs_icon 'x-square' size='28px'  %}"></svg> Eliminar </a>
+            <a class="editar_eliminar" href="{% url 'AppSpaceEditarEstrella' estrella.id %}"><i class="bi-pencil-square"></i>Editar</a>
+            <a class="editar_eliminar" href="{% url 'AppSpaceEliminarEstrella' estrella.id %}"><i class="bi-x-square"></i>Eliminar</a>
         </p>
     {% endfor %}
 

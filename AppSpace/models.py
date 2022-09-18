@@ -1,7 +1,8 @@
+import dataclasses
 import random
 
 from django.db import models
-
+from self import self
 
 
 # Create your models here.
@@ -15,6 +16,8 @@ class ClaseEstrella(models.Model):
         return self.clase_estrella
     def __str__(self):
         return f' Estrella : {self.clase_estrella}'
+    class Meta:
+        db_table = 'appspace_claseestrella'
 
 class ClasePlaneta(models.Model):
     clase_planeta = models.CharField(max_length=50)
@@ -23,11 +26,14 @@ class ClasePlaneta(models.Model):
 
     def __str__(self):
         return f' Planeta : {self.clase_planeta} '
-
+    class Meta:
+        db_table = 'appspace_claseplaneta'
 
 class ClaseRegion(models.Model):
     clase_region = models.CharField(max_length=50)
     descripcion = models.CharField(max_length=250,null=True)
+    class Meta:
+        db_table = 'appspace_claseregion'
 
 
 
@@ -39,6 +45,8 @@ class SistemaPlanetario(models.Model):
 
     def __str__(self):
         return f' Sistema : {self.nombre}'
+    class Meta:
+        db_table = 'appspace_sistemaplanetario'
 
 class Estrella(models.Model):
     nombre = models.CharField(max_length=40)
@@ -48,6 +56,10 @@ class Estrella(models.Model):
 
     def __str__(self):
         return f' {self.nombre}'
+    class Meta:
+        db_table = 'appspace_estrella'
+
+
 class Planeta(models.Model):
     nombre = models.CharField(max_length=40)
     clase_planeta = models.ForeignKey(ClasePlaneta, blank=False,null=False, on_delete=models.CASCADE, default=0)
@@ -61,6 +73,9 @@ class Planeta(models.Model):
 
     def __str__(self):
         return f' {self.nombre} '
+    class Meta:
+        db_table = 'appspace_planeta'
+
 
 class Habitante(models.Model):
     nombre = models.CharField(max_length=40)
@@ -72,3 +87,5 @@ class Habitante(models.Model):
 
     def __str__(self):
         return f' id: {self.id} | {self.nombre} | {self.apellido} | {self.edad} | {self.idioma} | {self.planeta_natal} | {self.habitando_planeta} '
+    class Meta:
+        db_table = 'appspace_habitante'

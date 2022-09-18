@@ -21,8 +21,8 @@
     {% for habitante in habitantes %}
         <p>
             Habitante: {{ habitante.nombre }} {{ habitante.apellido }}
-            <a class="editar_eliminar" href="{% url 'AppSpaceEditarHabitante' habitante.id %}"><svg class="size_svg" src="{% bs_icon 'pencil-square' size='28px'  %}"></svg> Editar</a>
-            <a class="editar_eliminar" href="{% url 'AppSpaceEliminarHabitante' habitante.id %}"><svg class="size_svg" src="{% bs_icon 'x-square' size='28px'  %}"></svg> Eliminar </a>
+            <a class="editar_eliminar" href="{% url 'AppSpaceEditarHabitante' habitante.id %}"><i class="bi-pencil-square"></i>Editar</a>
+            <a class="editar_eliminar" href="{% url 'AppSpaceEliminarHabitante' habitante.id %}"><i class="bi-x-square"></i>Eliminar</a>
         </p>
     {% endfor %}
 

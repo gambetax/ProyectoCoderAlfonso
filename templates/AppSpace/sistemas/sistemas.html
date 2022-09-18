@@ -1,4 +1,5 @@
 {% extends 'index.html' %}
+{% load static %}
 {% load bootstrap_icons %}
 
 {% block title %} Sistemas {% endblock %}
@@ -10,10 +11,10 @@
         <h4>Sistema existente:</h4>
     {% endif %}
     {% for sistema in sistemas %}
-        <p>
+        <p class="d-block">
             Sistema: {{ sistema.nombre }}
-            <a class="editar_eliminar" href="{% url 'AppSpaceEditarSistema' sistema.id %}"><svg class="size_svg" src="{% bs_icon 'pencil-square' size='28px'  %}"></svg> Editar</a>
-            <a class="editar_eliminar" href="{% url 'AppSpaceEliminarSistema' sistema.id %}"><svg class="size_svg" src="{% bs_icon 'x-square' size='28px'  %}"></svg> Eliminar </a>
+            <a class="editar_eliminar d-inline w-25 " href="{% url 'AppSpaceEditarSistema' sistema.id %}"><i class="bi-pencil-square "></i>Editar</a>
+            <a class="editar_eliminar d-inline w-25" href="{% url 'AppSpaceEliminarSistema' sistema.id %}"><i class="bi-x-square"></i>Eliminar</a>
         </p>
     {% endfor %}
 

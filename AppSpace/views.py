@@ -1,5 +1,6 @@
 import django.db
 from _testcapi import hamt
+from django.db.models import F
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.template import loader
@@ -215,6 +216,11 @@ def crear_habitantes(request):
                 habitando_planeta=data.get('habitando_planeta'),
             )
             form_data.save()
+            print(form_data.habitando_planeta)
+
+            planeta_update = Planeta.objects.filter(nombre=form_data.habitando_planeta)
+            planeta_update.update(habitantes=F('habitantes')+1)
+            print(planeta_update.values())
         else:
             redirect('AppSpaceInicio')
 
