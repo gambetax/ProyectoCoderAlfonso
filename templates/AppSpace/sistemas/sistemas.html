@@ -12,8 +12,8 @@
     {% for sistema in sistemas %}
         <p>
             Sistema: {{ sistema.nombre }}
-            <a class="editar_eliminar" href="{% url 'AppSpaceEditarSistema' sistema.nombre %}"><svg class="size_svg" src="{% bs_icon 'pencil-square' size='28px'  %}"></svg> Editar</a>
-            <a class="editar_eliminar" href="{% url 'AppSpaceEliminarSistema' sistema.nombre %}"><svg class="size_svg" src="{% bs_icon 'x-square' size='28px'  %}"></svg> Eliminar </a>
+            <a class="editar_eliminar" href="{% url 'AppSpaceEditarSistema' sistema.id %}"><svg class="size_svg" src="{% bs_icon 'pencil-square' size='28px'  %}"></svg> Editar</a>
+            <a class="editar_eliminar" href="{% url 'AppSpaceEliminarSistema' sistema.id %}"><svg class="size_svg" src="{% bs_icon 'x-square' size='28px'  %}"></svg> Eliminar </a>
         </p>
     {% endfor %}
 

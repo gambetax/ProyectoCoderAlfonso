@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block title %}Editar Estrella{% endblock %}
+
+{% block body %}
+    <h3>Editar</h3>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ estrella.as_p }}
+        <input type="submit" value="Enviar">
+        <input type=button value="Volver" onClick="javascript:history.go(-1);"></button>
+    </form>
+
+{% endblock %}

@@ -1,3 +1,4 @@
+import requests
 from django import forms
 
 from .models import models, Habitante
@@ -54,6 +55,15 @@ class HabitanteForm(forms.Form):
     planeta_natal = forms.ModelChoiceField(queryset=Planeta.objects.all()) #Se debió utilizar un modelChoiceField para traer con un queryset la consulta al listado de Planetas
     habitando_planeta = forms.ModelChoiceField(queryset=Planeta.objects.all())
 
+class HabitanteEditarForm(forms.Form):
+
+    nombre = forms.CharField(max_length=40)
+    apellido = forms.CharField(max_length=40)
+    edad = forms.IntegerField(disabled=True)
+    idioma = forms.ChoiceField(choices= IDIOMA_CHOICE)
+    planeta_natal = forms.ModelChoiceField(queryset=Planeta.objects.all(),disabled=True) #Se debió utilizar un modelChoiceField para traer con un queryset la consulta al listado de Planetas
+    habitando_planeta = forms.ModelChoiceField(queryset=Planeta.objects.all())
+
 class ClaseEstrellForm(forms.Form):
     clase_estrella = forms.CharField(max_length=2)
     temperatura = forms.CharField(max_length=50)
@@ -89,4 +99,4 @@ class BuscarHabitanteForm(forms.Form):
     apellido = forms.CharField(max_length=40,required=False)
 
 class BuscarHabitantePlanetaForm(forms.Form):
-    habitando_planeta = forms.CharField(max_length=40,required=False)
+    habitando_planeta = forms.ModelChoiceField(queryset=Planeta.objects.all())

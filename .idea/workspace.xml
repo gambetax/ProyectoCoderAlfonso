@@ -6,17 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="2fc9dee6-763e-4aa3-bf36-fdd7994f8d89" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppSpace/static/AppSpace/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/AppSpace/static/AppSpace/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppSpace/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/AppSpace/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppSpace/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppSpace/migrations/0002_claseregion_delete_clase_region_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppSpace/migrations/0003_alter_claseplaneta_descripcion_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppSpace/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/AppSpace/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppSpace/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/AppSpace/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AppSpace/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/AppSpace/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/AppSpace/estrellas/estrellas.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AppSpace/estrellas/estrellas.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/AppSpace/habitantes/habitantes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AppSpace/habitantes/habitantes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/AppSpace/planetas/planetas.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AppSpace/planetas/planetas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/AppSpace/sistemas/editar_sistema.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AppSpace/sistemas/editar_sistema.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/AppSpace/sistemas/sistemas.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AppSpace/sistemas/sistemas.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/bases/navigation.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bases/navigation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,8 +31,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -48,21 +50,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Marian/PycharmProjects/ProyectoCoderAlfonso",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Project.color&quot;: &quot;57602d&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Marian/PycharmProjects/ProyectoCoderAlfonso&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Marian\PycharmProjects\ProyectoCoderAlfonso" />
@@ -105,6 +108,8 @@
       <workItem from="1663343365453" duration="867000" />
       <workItem from="1663344276577" duration="274000" />
       <workItem from="1663344554222" duration="12442000" />
+      <workItem from="1663517708025" duration="5323000" />
+      <workItem from="1663523344974" duration="1408000" />
     </task>
     <servers />
   </component>
@@ -121,5 +126,15 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/AppSpace/urls.py</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
