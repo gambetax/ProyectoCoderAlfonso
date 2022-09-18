@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['aqueous-sands-40930.herokuapp.com','127.0.0.1','localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,7 +44,6 @@ INSTALLED_APPS = [
     'django_bootstrap_icons',
     'AppSpace',
     'UserSpace',
-    'whitenoise.runserver_nostatic',
 
 ]
 
@@ -155,3 +155,4 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'staticfiles'),)
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
