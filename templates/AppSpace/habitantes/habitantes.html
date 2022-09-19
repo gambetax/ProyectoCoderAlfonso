@@ -22,7 +22,9 @@
         <p>
             Habitante: {{ habitante.nombre }} {{ habitante.apellido }}
             <a class="editar_eliminar" href="{% url 'AppSpaceEditarHabitante' habitante.id %}"><i class="bi-pencil-square"></i>Editar</a>
-            <a class="editar_eliminar" href="{% url 'AppSpaceEliminarHabitante' habitante.id %}"><i class="bi-x-square"></i>Eliminar</a>
+            {% if user.is_staff %}
+                <a class="editar_eliminar" href="{% url 'AppSpaceEliminarHabitante' habitante.id %}"><i class="bi-x-square"></i>Eliminar</a>
+            {% endif %}
         </p>
     {% endfor %}
 

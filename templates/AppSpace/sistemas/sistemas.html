@@ -14,7 +14,9 @@
         <p class="d-block">
             Sistema: {{ sistema.nombre }}
             <a class="editar_eliminar d-inline w-25 " href="{% url 'AppSpaceEditarSistema' sistema.id %}"><i class="bi-pencil-square "></i>Editar</a>
-            <a class="editar_eliminar d-inline w-25" href="{% url 'AppSpaceEliminarSistema' sistema.id %}"><i class="bi-x-square"></i>Eliminar</a>
+            {% if user.is_staff %}
+                <a class="editar_eliminar d-inline w-25" href="{% url 'AppSpaceEliminarSistema' sistema.id %}"><i class="bi-x-square"></i>Eliminar</a>
+            {% endif %}
         </p>
     {% endfor %}
 
