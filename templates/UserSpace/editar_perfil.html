@@ -1,14 +1,14 @@
 {% extends 'index.html' %}
 
-{% block title %}Editar Habitante{% endblock %}
+{% block title %}Editar{% endblock %}
 
 {% block body %}
     <h3>Editar</h3>
     <form action="" method="POST">
         {% csrf_token %}
-        {{ habitante.as_p }}
+        {{ usuario.as_p }}
         <input type="submit" value="Enviar">
-{#        <input type=button value="Volver" onClick="javascript:history.go(-1);"></button>#}
+        <input type=button value="Volver" onClick="javascript:history.go(-1);"></button>
     </form>
 
 {% endblock %}

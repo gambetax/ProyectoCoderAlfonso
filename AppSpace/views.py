@@ -2,7 +2,7 @@ import django.db
 from _testcapi import hamt
 from django.db.models import F
 from django.shortcuts import render,redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, QueryDict, HttpResponseRedirect
 from django.template import loader
 from django.contrib.auth.decorators import login_required, permission_required
 
@@ -216,11 +216,12 @@ def crear_habitantes(request):
                 habitando_planeta=data.get('habitando_planeta'),
             )
             form_data.save()
-            print(form_data.habitando_planeta)
 
-            planeta_update = Planeta.objects.filter(nombre=form_data.habitando_planeta)
-            planeta_update.update(habitantes=F('habitantes')+1)
-            print(planeta_update.values())
+            planeta = Planeta.objects.get(id=request.POST.get('habitando_planeta'))
+            planeta.habitantes = Habitante.objects.exclude(id=None).count()
+            planeta.habitantes = F('habitantes') + 1
+            planeta.save()
+
         else:
             redirect('AppSpaceInicio')
 
@@ -373,6 +374,7 @@ def buscar_habitantes(request):
 
 #VISTAS PARA EDITAR
 
+@login_required()
 def editar_sistema(request, id):
 
     sistema = SistemaPlanetario.objects.get(id=id)
@@ -406,6 +408,7 @@ def editar_sistema(request, id):
 
     return render(request, 'AppSpace/sistemas/editar_sistema.html', contexto)
 
+@login_required()
 def editar_estrella(request, id):
 
     estrella = Estrella.objects.get(id=id)
@@ -438,6 +441,7 @@ def editar_estrella(request, id):
 
     return render(request, 'AppSpace/estrellas/editar_estrella.html', contexto)
 
+@login_required()
 def editar_planeta(request, id):
 
     planeta = Planeta.objects.get(id=id)
@@ -478,6 +482,7 @@ def editar_planeta(request, id):
 
     return render(request, 'AppSpace/planetas/editar_planeta.html', contexto)
 
+@login_required()
 def editar_habitante(request, id):
 
     habitante = Habitante.objects.get(id=id)
@@ -505,7 +510,6 @@ def editar_habitante(request, id):
         'edad' : habitante.edad,
         'planeta_natal' : habitante.planeta_natal,
         'habitando_planeta': habitante.habitando_planeta,
-
     })
 
     contexto = {

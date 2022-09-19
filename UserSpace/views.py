@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate,login
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 
-from UserSpace.forms import UserRegisterForm,AvatarForm
+from UserSpace.forms import UserRegisterForm, AvatarForm, UserEditForm
 from UserSpace.models import Avatar
 
 
@@ -55,13 +55,39 @@ def solicitud_inicio_sesion(request):
 
     return render(request,'UserSpace/login.html',contexto)
 
-def avatar(request):
+def editar_perfil(request):
+    usuario = request.user
+
+    if request.method=='POST':
+        my_form = UserEditForm(request.POST)
+        if my_form.is_valid():
+
+            data = my_form.cleaned_data
+
+            usuario.email=data.get('email')
+            usuario.password1 = data.get('password1')
+            usuario.password2 = data.get('password2')
+
+            usuario.save()
+            return render(request,'AppSpace')
+
+    form_User = UserEditForm(initial={
+        'email':usuario.email
+    })
+
+    contexto = {
+        'usuario' : form_User,
+    }
+
+    return render(request,'UserSpace/editar_perfil.html',contexto)
+
+def agregar_avatar(request):
     if request.method == 'POST':
         form = AvatarForm(request.POST,request.FILES)
 
         if form.is_valid():
             data = form.cleaned_data
-            avatar = Avatar.objects.fields(user=data.get('usuario'))
+            avatar = Avatar.objects.filter(user=data.get('usuario'))
 
             if len(avatar)>0:
                 avatar = avatar[0]
@@ -69,10 +95,11 @@ def avatar(request):
                 avatar.save()
             else:
                 avatar = Avatar(user=data.get('user'),imagen=data.get('imagen'))
+                avatar.save()
 
         return redirect('AppSpaceInicio')
 
     contexto = {
-        'form' : AvatarForm()
+        'avatar' : AvatarForm()
     }
     return render(request,'UserSpace/avatar.html',contexto)

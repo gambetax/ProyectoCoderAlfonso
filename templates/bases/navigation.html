@@ -73,19 +73,27 @@
                                 </div>
                             </li>
                         {% endif %}
-                        <li class="nav-item m-3" >
+                        <li class="nav-item m-3 dropdown" >
                             {% if user.is_authenticated %}
-                                <h6 class="nav-item"> User: {{ user.get_username }}</h6>
-                                <img class="nav-link" src="{{ user.avatar.imagen.url }}" alt="">
-                        </li>
-                        <li class="nav-item m-3">
-                            <a class="btn btn-dark btn-sm" href="{% url 'UserLogout' %}">Logout</a>
-                        </li>
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink_Usuario" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <h5> {{ user.get_username }}</h5>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Usuario">
+                                    <a class="dropdown-item" href="{% url 'UserEditar'%}">Editar</a>
+                                    <a class="dropdown-item" href="{% url 'UserAvatar'%}">Cambiar Avatar</a>
+                                </div>
+                                <li class="nav-item m-1">
+                                    <img class="nav-item rounded" height="100px" width="100px" src="{{ user.avatar.imagen.url }}" alt="">
+                                </li>
+
+                                <li class="nav-item m-3">
+                                    <a class="btn btn-dark btn-lg rounded" href="{% url 'UserLogout' %}">Logout</a>
+                                </li>
                             {% else %}
                         <li class="nav-item m-3">
                                 <div class="justify-content-between">
-                                    <a class="btn btn-dark btn-sm" href="{% url 'UserLogin' %}">Login</a>
-                                    <a class="btn btn-dark btn-sm" href="{% url 'UserRegister' %}">Registrarse</a>
+                                    <a class="btn btn-dark btn-lg rounded" href="{% url 'UserLogin' %}">Login</a>
+                                    <a class="btn btn-dark btn-lg rounded" href="{% url 'UserRegister' %}">Registrarse</a>
                                 </div>
                             {% endif %}
                         </li>

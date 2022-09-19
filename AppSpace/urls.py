@@ -34,6 +34,7 @@ urlpatterns = [
     path('habitantes/editar_habitante/<int:id>', editar_habitante, name='AppSpaceEditarHabitante'),
     path('habitantes/eliminar_habitante/<int:id>', eliminar_habitante, name='AppSpaceEliminarHabitante'),
 
+
     path('crear_clase_estrella', crear_clase_estrella, name='AppSpaceClaseEstrella'),
     path('crear_clase_planeta', crear_clase_planeta , name='AppSpaceClasePlaneta'),
     path('crear_clase_region', crear_clase_region, name='AppSpaceClaseRegion'),
