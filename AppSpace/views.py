@@ -1,12 +1,8 @@
-import django.db
-from _testcapi import hamt
 from django.db.models import F
-from django.shortcuts import render,redirect
-from django.http import HttpResponse, QueryDict, HttpResponseRedirect
-from django.template import loader
-from django.contrib.auth.decorators import login_required, permission_required
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 
-from AppSpace.models import SistemaPlanetario,Estrella,Planeta,Habitante,ClasePlaneta, ClaseRegion, ClaseEstrella
+from AppSpace.models import SistemaPlanetario, Estrella, Planeta, Habitante, ClasePlaneta, ClaseRegion, ClaseEstrella
 
 
 from AppSpace.forms import SistemaPlanetarioForm, BuscarSistemaForm, BuscarEstrellaForm, BuscarPlanetaForm, \
@@ -14,6 +10,7 @@ from AppSpace.forms import SistemaPlanetarioForm, BuscarSistemaForm, BuscarEstre
 from AppSpace.forms import HabitanteForm, BuscarHabitanteForm
 from AppSpace.forms import EstrellaForm, ClaseEstrellForm
 from AppSpace.forms import PlanetaForm, ClasePlanetaForm, ClaseRegionForm
+
 
 # Create your views here.
 def inicio(request):
@@ -65,7 +62,7 @@ def inicio(request):
 # CLASE REGION:
 
 
-#VISTAR PARA VER LISTADOS COMPLETOS
+# VISTAR PARA VER LISTADOS COMPLETOS
 
 def ver_sistemas(request):
     sistemas = SistemaPlanetario.objects.all()
@@ -73,7 +70,8 @@ def ver_sistemas(request):
     contexto = {
         'sistemas': sistemas,
     }
-    return render(request,'AppSpace/sistemas/sistemas.html', contexto)
+    return render(request, 'AppSpace/sistemas/sistemas.html', contexto)
+
 
 def ver_estrellas(request):
     estrellas = Estrella.objects.all()
@@ -93,7 +91,7 @@ def ver_planetas(request):
         planetas = Planeta.objects.filter(sistema_planetario=sistema_planetario)
 
     contexto = {
-        'my_form' : BuscarPlanetaSistemaForm(),
+        'my_form': BuscarPlanetaSistemaForm(),
         'planetas': planetas,
     }
     return render(request, 'AppSpace/planetas/planetas.html', contexto)
@@ -108,12 +106,13 @@ def ver_habitantes(request):
         habitantes = Habitante.objects.filter(habitando_planeta=habitando_planeta)
 
     contexto = {
-        'my_form' : BuscarHabitantePlanetaForm(),
+        'my_form': BuscarHabitantePlanetaForm(),
         'habitantes': habitantes,
     }
     return render(request, 'AppSpace/habitantes/habitantes.html', contexto)
 
-#VISTAS PARA CREAR
+# VISTAS PARA CREAR
+
 
 @login_required()
 def crear_sistema_planetario(request):
@@ -124,21 +123,22 @@ def crear_sistema_planetario(request):
             data = my_form.cleaned_data
 
             form_data = SistemaPlanetario(
-                nombre = data.get('nombre'),
-                cant_estrellas= data.get('cant_estrellas'),
-                cant_planetas = data.get('cant_planetas'),
-                clase_estrella= data.get('clase_estrella')
+                nombre=data.get('nombre'),
+                cant_estrellas=data.get('cant_estrellas'),
+                cant_planetas=data.get('cant_planetas'),
+                clase_estrella=data.get('clase_estrella')
             )
             form_data.save()
         else:
             redirect('AppSpace')
 
-    sistema_estrellas= SistemaPlanetarioForm()
+    sistema_estrellas = SistemaPlanetarioForm()
     contexto = {
-        'sistemas' : sistema_estrellas,
-        'my_form' : SistemaPlanetarioForm(),
+        'sistemas': sistema_estrellas,
+        'my_form': SistemaPlanetarioForm(),
     }
     return render(request, 'AppSpace/sistemas/crear_sistema.html', contexto)
+
 
 @login_required()
 def crear_estrellas(request):
@@ -149,21 +149,22 @@ def crear_estrellas(request):
             data = my_form.cleaned_data
 
             form_data = Estrella(
-                nombre = data.get('nombre'),
-                clase_estrella = data.get('clase_estrella'),
-                temperatura_media= data.get('temperatura_media'),
-                sistema_planetario = data.get('sistema_planetario')
+                nombre=data.get('nombre'),
+                clase_estrella=data.get('clase_estrella'),
+                temperatura_media=data.get('temperatura_media'),
+                sistema_planetario=data.get('sistema_planetario')
             )
             form_data.save()
         else:
             redirect('AppSpace')
 
-    estrellas= Estrella.objects.all()
+    estrellas = Estrella.objects.all()
     contexto = {
-        'estrellas' : estrellas,
-        'my_form' : EstrellaForm(),
+        'estrellas': estrellas,
+        'my_form': EstrellaForm(),
     }
-    return render(request,'AppSpace/estrellas/crear_estrellas.html', contexto)
+    return render(request, 'AppSpace/estrellas/crear_estrellas.html', contexto)
+
 
 @login_required()
 def crear_planetas(request):
@@ -172,7 +173,6 @@ def crear_planetas(request):
         my_form = PlanetaForm(request.POST)
 
         if my_form.is_valid():
-
             data = my_form.cleaned_data
 
             form_data = Planeta(
@@ -193,10 +193,12 @@ def crear_planetas(request):
     planetas = Planeta.objects.all()
 
     contexto = {
-        'planetas' : planetas,
-        'my_form' : PlanetaForm(),
+        'planetas': planetas,
+        'my_form': PlanetaForm(),
     }
-    return render(request,'AppSpace/planetas/crear_planetas.html',contexto)
+    return render(request, 'AppSpace/planetas/crear_planetas.html', contexto)
+
+
 @login_required
 def crear_habitantes(request):
 
@@ -228,12 +230,13 @@ def crear_habitantes(request):
     habitantes = Habitante.objects.all()
 
     contexto = {
-        'habitante' : habitantes,
-        'my_form' : HabitanteForm(),
+        'habitante': habitantes,
+        'my_form': HabitanteForm(),
     }
-    return render(request,'AppSpace/habitantes/crear_habitantes.html',contexto)
+    return render(request, 'AppSpace/habitantes/crear_habitantes.html', contexto)
 
 # CARACTERISTICAS DE ESTRELLAS, PLANETAS Y REGIONES
+
 
 @login_required
 def crear_clase_estrella(request):
@@ -261,6 +264,7 @@ def crear_clase_estrella(request):
     }
     return render(request, 'AppSpace/clase_estrellas.html', contexto)
 
+
 @login_required
 def crear_clase_planeta(request):
     if request.method == 'POST':
@@ -286,6 +290,7 @@ def crear_clase_planeta(request):
         'my_form': ClasePlanetaForm(),
     }
     return render(request, 'AppSpace/clase_planetas.html', contexto)
+
 
 @login_required
 def crear_clase_region(request):
@@ -314,34 +319,35 @@ def crear_clase_region(request):
     return render(request, 'AppSpace/clase_regiones.html', contexto)
 
 
-
-#VISTAS PARA BUSCAR
+# VISTAS PARA BUSCAR
 
 @login_required
 def buscar_sistemas_planetarios(request):
     sistema_planetario = []
-    if request.method =='POST':
+    if request.method == 'POST':
         nombre = request.POST.get('nombre')
         sistema_planetario = SistemaPlanetario.objects.filter(nombre__icontains=nombre)
 
     contexto = {
-        'my_form' : BuscarSistemaForm(),
-        'sistemas' : sistema_planetario,
+        'my_form': BuscarSistemaForm(),
+        'sistemas': sistema_planetario,
     }
 
-    return render(request,'AppSpace/sistemas/buscar_sistemas.html', contexto)
+    return render(request, 'AppSpace/sistemas/buscar_sistemas.html', contexto)
+
 
 @login_required
 def buscar_estrellas(request):
     estrellas = []
-    if request.method =='POST':
+    if request.method == 'POST':
         nombre = request.POST.get('nombre')
         estrellas = Estrella.objects.filter(nombre__icontains=nombre)
     contexto = {
-        'my_form' : BuscarEstrellaForm(),
-        'estrellas' : estrellas,
+        'my_form': BuscarEstrellaForm(),
+        'estrellas': estrellas,
     }
-    return render(request,'AppSpace/estrellas/buscar_estrellas.html', contexto)
+    return render(request, 'AppSpace/estrellas/buscar_estrellas.html', contexto)
+
 
 @login_required
 def buscar_planetas(request):
@@ -351,11 +357,12 @@ def buscar_planetas(request):
         planetas = Planeta.objects.filter(nombre__icontains=nombre)
 
     contexto = {
-        'my_form' : BuscarPlanetaForm(),
-        'planetas' : planetas
+        'my_form': BuscarPlanetaForm(),
+        'planetas': planetas
     }
 
-    return render(request,'AppSpace/planetas/buscar_planetas.html', contexto)
+    return render(request, 'AppSpace/planetas/buscar_planetas.html', contexto)
+
 
 @login_required
 def buscar_habitantes(request):
@@ -370,9 +377,10 @@ def buscar_habitantes(request):
         'habitantes': habitantes
     }
 
-    return render(request,'AppSpace/habitantes/buscar_habitantes.html', contexto)
+    return render(request, 'AppSpace/habitantes/buscar_habitantes.html', contexto)
 
-#VISTAS PARA EDITAR
+# VISTAS PARA EDITAR
+
 
 @login_required()
 def editar_sistema(request, id):
@@ -394,19 +402,20 @@ def editar_sistema(request, id):
 
             return redirect('AppSpaceSistema')
 
-    form_Space = SistemaPlanetarioForm(initial={
+    form_space = SistemaPlanetarioForm(initial={
 
         'sistema': sistema.nombre,
         'cant_estrellas': sistema.cant_estrellas,
-        'cant_planetas' : sistema.cant_planetas,
-        'clase_estrella' : sistema.clase_estrella,
+        'cant_planetas': sistema.cant_planetas,
+        'clase_estrella': sistema.clase_estrella,
     })
 
     contexto = {
-        'sistema': form_Space,
+        'sistema': form_space,
     }
 
     return render(request, 'AppSpace/sistemas/editar_sistema.html', contexto)
+
 
 @login_required()
 def editar_estrella(request, id):
@@ -425,21 +434,21 @@ def editar_estrella(request, id):
             estrella.sistema_planetario = data.get('sistema_planetario')
 
             estrella.save()
-
             return redirect('AppSpaceEstrellas')
 
-    form_Space = EstrellaForm(initial={
+    form_space = EstrellaForm(initial={
         'nombre': estrella.nombre,
         'clase_estrella': estrella.clase_estrella,
-        'temperatura_media' : estrella.temperatura_media,
-        'sistema_planetario' : estrella.sistema_planetario,
+        'temperatura_media': estrella.temperatura_media,
+        'sistema_planetario': estrella.sistema_planetario,
     })
 
     contexto = {
-        'estrella': form_Space,
+        'estrella': form_space,
     }
 
     return render(request, 'AppSpace/estrellas/editar_estrella.html', contexto)
+
 
 @login_required()
 def editar_planeta(request, id):
@@ -462,25 +471,25 @@ def editar_planeta(request, id):
             planeta.sistema_planetario = data.get('sistema_planetario')
 
             planeta.save()
-
             return redirect('AppSpacePlanetas')
 
-    form_Space = PlanetaForm(initial={
+    form_space = PlanetaForm(initial={
         'nombre': planeta.nombre,
         'clase_planeta': planeta.clase_planeta,
         'regiones': planeta.regiones,
         'habitantes': planeta.habitantes,
         'satelites_naturales': planeta.satelites_naturales,
         'satelites_artificiales': planeta.satelites_artificiales,
-        'temperatura_media' : planeta.temperatura_media,
-        'sistema_planetario' : planeta.sistema_planetario,
+        'temperatura_media': planeta.temperatura_media,
+        'sistema_planetario': planeta.sistema_planetario,
     })
 
     contexto = {
-        'planeta': form_Space,
+        'planeta': form_space,
     }
 
     return render(request, 'AppSpace/planetas/editar_planeta.html', contexto)
+
 
 @login_required()
 def editar_habitante(request, id):
@@ -495,30 +504,28 @@ def editar_habitante(request, id):
 
             habitante.nombre = data.get('nombre')
             habitante.apellido = data.get('apellido')
-            habitante.edad = data.get('edad')
             habitante.idioma = data.get('idioma')
-            habitante.planeta_natal = data.get('planeta_natal')
             habitante.habitando_planeta = data.get('habitando_planeta')
 
             habitante.save()
-
             return redirect('AppSpaceHabitantes')
 
-    form_Space = HabitanteEditarForm(initial={
+    form_space = HabitanteForm(initial={
         'nombre': habitante.nombre,
         'apellido': habitante.apellido,
-        'edad' : habitante.edad,
-        'planeta_natal' : habitante.planeta_natal,
+        'edad': habitante.edad,
+        'planeta_natal': habitante.planeta_natal,
         'habitando_planeta': habitante.habitando_planeta,
     })
 
     contexto = {
-        'habitante': form_Space,
+        'habitante': form_space,
     }
 
     return render(request, 'AppSpace/habitantes/editar_habitante.html', contexto)
 
-#VISTAS PARA ELIMINAR
+# VISTAS PARA ELIMINAR
+
 
 @login_required()
 def eliminar_sistema(request, id):
@@ -528,31 +535,35 @@ def eliminar_sistema(request, id):
 
     return redirect('AppSpaceSistema')
 
+
 @login_required()
-def eliminar_estrella(request,id):
+def eliminar_estrella(request, id):
 
     estrella = Estrella.objects.get(id=id)
     estrella.delete()
 
     return redirect('AppSpaceEstrellas')
 
+
 @login_required()
-def eliminar_planeta(request,id):
+def eliminar_planeta(request, id):
 
     planeta = Planeta.objects.get(id=id)
     planeta.delete()
 
     return redirect('AppSpacePlanetas')
 
+
 @login_required()
-def eliminar_habitante(request,id):
+def eliminar_habitante(request, id):
 
     habitante = Habitante.objects.get(id=id)
     habitante.delete()
 
     return redirect('AppSpaceHabitantes')
 
-#VISTAS PARA DESHABILITAR/HABILITAR
+# VISTAS PARA DESHABILITAR/HABILITAR
+
 
 @login_required()
 def deshabilitar_sistema(request, estado):
@@ -562,24 +573,27 @@ def deshabilitar_sistema(request, estado):
 
     return redirect('AppSpaceSistema')
 
+
 @login_required()
-def deshabilitar_estrella(request,estado):
+def deshabilitar_estrella(request, estado):
 
     estrella = Estrella.objects.get(estado=estado)
 
     estrella.save()
 
-    return  redirect('AppSpaceEstrellas')
+    return redirect('AppSpaceEstrellas')
+
 
 @login_required()
-def deshabilitar_planeta(request,estado):
+def deshabilitar_planeta(request, estado):
 
     planeta = Planeta.objects.get(estado=estado)
     planeta.save()
     return redirect('AppSpacePlanetas')
 
+
 @login_required()
-def deshabilitar_habitante(request,estado):
+def deshabilitar_habitante(request, estado):
 
     habitante = Habitante.objects.get(estado=estado)
     habitante.save()

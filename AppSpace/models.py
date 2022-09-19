@@ -85,7 +85,7 @@ class Habitante(models.Model):
     planeta_natal = models.ForeignKey(Planeta, on_delete=models.CASCADE, related_name='%(class)s_planeta_natal')
     habitando_planeta = models.ForeignKey(Planeta, on_delete=models.CASCADE, related_name='%(class)s_habitando_planeta' )
 
-    # def __str__(self):
-    #     return f' id: {self.id} | {self.nombre} | {self.apellido} | {self.edad} | {self.idioma} | {self.planeta_natal} | {self.habitando_planeta} '
+    def __str__(self):
+        return f' id: {self.id} | {self.nombre} | {self.apellido} | {self.edad} | {self.idioma} | {self.planeta_natal} | {self.habitando_planeta} '
     class Meta:
         db_table = 'appspace_habitante'
