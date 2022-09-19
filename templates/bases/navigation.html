@@ -83,7 +83,11 @@
                                     <a class="dropdown-item" href="{% url 'UserAvatar'%}">Cambiar Avatar</a>
                                 </div>
                                 <li class="nav-item m-1">
-                                    <img class="nav-item rounded" height="100px" width="100px" src="{{ user.avatar.imagen.url }}" alt="">
+                                    {% if user.avatar.imagen.null %}
+                                        <img class="nav-item rounded" height="100px" width="100px" src="{{ user.avatar.imagen.url }}" alt="">
+                                    {% elif user.avatar.imagen %}
+                                        <img class="nav-item rounded" height="100px" width="100px" src="{{ user.avatar.imagen.url }}" alt="">
+                                    {% endif %}
                                 </li>
 
                                 <li class="nav-item m-3">

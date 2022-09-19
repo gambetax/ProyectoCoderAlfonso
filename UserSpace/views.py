@@ -58,6 +58,8 @@ def solicitud_inicio_sesion(request):
 def editar_perfil(request):
     usuario = request.user
 
+    user.avatar.imagen==NULL
+
     if request.method=='POST':
         my_form = UserEditForm(request.POST)
         if my_form.is_valid():
@@ -96,6 +98,7 @@ def agregar_avatar(request):
             else:
                 avatar = Avatar(user=data.get('user'),imagen=data.get('imagen'))
                 avatar.save()
+
 
         return redirect('AppSpaceInicio')
 
