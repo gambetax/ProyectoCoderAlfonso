@@ -1,0 +1,22 @@
+.editar_eliminar{
+  text-decoration: none;
+}
+
+.size_svg{
+  height: 28px;
+  width: 28px;
+  vertical-align: middle;
+  display: inline-block;
+  align-items: center;
+}
+
+.user_authentification{
+  vertical-align: middle;
+  display: inline;
+  position: relative;
+}
+
+.user_name_image{
+  display: inline;
+  position: relative;
+ }
