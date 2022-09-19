@@ -48,9 +48,9 @@
                     <hr class="my-4" />
                         {% if request.build_absolute_uri == 'http://127.0.0.1:8000/AppSpace/' or request.build_absolute_uri == 'https://aqueous-sands-40930.herokuapp.com/AppSpace/' %}
                             {% if habitantes|length > 1 %}
-                                <h4 class="text-center">Habitantes existentes:</h4>
+                                <h4 class="text-center">Habitantes recientes:</h4>
                             {% else %}
-                                <h4>Habitante existente:</h4>
+                                <h4>Habitante reciente:</h4>
                             {% endif %}
                             {% for habitante in habitantes %}
                                 <div class="card text-center mb-2 mw-100 " >
