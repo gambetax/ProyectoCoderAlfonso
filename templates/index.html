@@ -43,11 +43,10 @@
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-xl-10 justify-content-center">
-
                     {% block body %}
                     {% endblock %}
                     <hr class="my-4" />
-                        {% if request.build_absolute_uri == 'http://127.0.0.1:8000/AppSpace/' %}
+                        {% if request.build_absolute_uri == 'http://127.0.0.1:8000/AppSpace/' or request.build_absolute_uri == 'https://aqueous-sands-40930.herokuapp.com/AppSpace/' %}
                             {% if habitantes|length > 1 %}
                                 <h4 class="text-center">Habitantes existentes:</h4>
                             {% else %}
