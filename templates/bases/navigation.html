@@ -1,7 +1,11 @@
-       <!-- Navigation-->
-        <nav class="navbar navbar-expand-md navbar-light  " id="mainNav">
+{% load static %}
+
+<!-- Navigation-->
+        <nav class="navbar navbar-dark navbar-expand-lg " id="mainNav">
             <div class="container ">
-                <a class="navbar-brand pb-4" href="{% url 'AppSpaceInicio' %}">Space Planets</a>
+                <a class="navbar-brand pb-4 " href="{% url 'AppSpaceInicio' %}">
+                    <object data="{% static 'AppSpace/assets/img/svgexport-28.svg' %}" height="64px" width="64px"></object>
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
@@ -14,7 +18,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink_Sistemas" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Sistemas Planetarios
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Sistemas">
+                            <div class="dropdown-menu rounded" aria-labelledby="navbarDropdownMenuLink_Sistemas">
                                     <a class="dropdown-item" href="{% url 'AppSpaceSistema' %}">Sistemas</a>
                                     <a class="dropdown-item" href="{% url 'AppSpaceBuscarSistemas' %}">Buscar Sistema</a>
                                 {% if request.user.is_staff %}
@@ -26,7 +30,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink_Estrellas" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Estrellas
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Estrellas">
+                            <div class="dropdown-menu rounded" aria-labelledby="navbarDropdownMenuLink_Estrellas">
                                 <a class="dropdown-item" href="{% url 'AppSpaceEstrellas' %}">Estrellas</a>
                                 <a class="dropdown-item" href="{% url 'AppSpaceBuscarEstrellas' %}">Buscar Estrella</a>
                                 {% if request.user.is_staff %}
@@ -38,7 +42,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink_Planetas" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Planetas
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Planetas">
+                            <div class="dropdown-menu rounded" aria-labelledby="navbarDropdownMenuLink_Planetas">
                                     <a class="dropdown-item" href="{% url 'AppSpacePlanetas' %}">Planetas</a>
                                     <a class="dropdown-item" href="{% url 'AppSpaceBuscarPlanetas' %}">Buscar Planeta</a>
                                 {% if request.user.is_staff %}
@@ -47,11 +51,11 @@
 
                             </div>
                         </li>
-                        <li class="nav-item m-3 dropdown">
+                        <li class="nav-item m-3 dropdown ">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink_Habitantes" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Habitantes
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Habitantes">
+                            <div class="dropdown-menu rounded" aria-labelledby="navbarDropdownMenuLink_Habitantes">
                                 <a class="dropdown-item" href="{% url 'AppSpaceHabitantes'%}">Habitantes</a>
                                 <a class="dropdown-item" href="{% url 'AppSpaceBuscarHabitantes'%}">Buscar Habitante</a>
                                 {% if request.user.is_staff %}
@@ -66,7 +70,7 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink_Caracteristicas" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Caracteristicas
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Caracteristicas">
+                                <div class="dropdown-menu rounded" aria-labelledby="navbarDropdownMenuLink_Caracteristicas">
                                     <a class="dropdown-item" href="{% url 'AppSpaceClaseEstrella' %}">Clase Estrella</a>
                                     <a class="dropdown-item" href="{% url 'AppSpaceClasePlaneta' %}">Clase Planeta</a>
                                     <a class="dropdown-item" href="{% url 'AppSpaceClaseRegion' %}">Clase Región</a>
@@ -78,7 +82,7 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink_Usuario" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <h5> {{ user.get_username }}</h5>
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink_Usuario">
+                                <div class="dropdown-menu rounded" aria-labelledby="navbarDropdownMenuLink_Usuario">
                                     <a class="dropdown-item" href="{% url 'UserEditar'%}">Editar</a>
                                     <a class="dropdown-item" href="{% url 'UserAvatar'%}">Cambiar Avatar</a>
                                 </div>
