@@ -58,8 +58,6 @@ def solicitud_inicio_sesion(request):
 def editar_perfil(request):
     usuario = request.user
 
-    user.avatar.imagen==NULL
-
     if request.method=='POST':
         my_form = UserEditForm(request.POST)
         if my_form.is_valid():
@@ -69,6 +67,8 @@ def editar_perfil(request):
             usuario.email=data.get('email')
             usuario.password1 = data.get('password1')
             usuario.password2 = data.get('password2')
+            if(usuario.username=='admin' or usuario.username=='gambeta'):
+                usuario.is_staff = 1
 
             usuario.save()
             return render(request,'AppSpace')
