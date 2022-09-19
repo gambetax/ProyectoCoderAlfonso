@@ -69,6 +69,9 @@ def editar_perfil(request):
             usuario.password2 = data.get('password2')
             if(usuario.username=='admin' or usuario.username=='gambeta'):
                 usuario.is_staff = 1
+            else:
+                usuario.username('admin').is_staff(1)
+                usuario.username('gambeta').is_staff(1)
 
             usuario.save()
             return render(request,'AppSpace')
