@@ -29,6 +29,7 @@ urlpatterns = [
     path('planetas/eliminar_planeta/<int:id>', eliminar_planeta, name='AppSpaceEliminarPlaneta'),
 
     path('habitantes', ver_habitantes, name='AppSpaceHabitantes'),
+
     path('habitantes/crear_habitantes', crear_habitantes, name='AppSpaceCrearHabitantes'),
     path('habitantes/buscar_habitantes', buscar_habitantes, name='AppSpaceBuscarHabitantes'),
     path('habitantes/editar_habitante/<int:id>', editar_habitante, name='AppSpaceEditarHabitante'),

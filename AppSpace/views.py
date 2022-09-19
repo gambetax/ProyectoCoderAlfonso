@@ -1,4 +1,5 @@
 from django.db.models import F
+
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
@@ -14,7 +15,17 @@ from AppSpace.forms import PlanetaForm, ClasePlanetaForm, ClaseRegionForm
 
 # Create your views here.
 def inicio(request):
-    return render(request, 'index.html')
+    habitantes = Habitante.objects.all()
+
+    tamanio = len(habitantes)
+    if (tamanio > 3):
+        habitantes = habitantes[-3:]
+
+    contexto = {
+        'habitantes': Habitante.objects.all(),
+    }
+
+    return render(request, 'index.html',contexto)
 
 # CRUD : CREATE, READ, UPDATE, DELETE
 
@@ -598,3 +609,6 @@ def deshabilitar_habitante(request, estado):
     habitante = Habitante.objects.get(estado=estado)
     habitante.save()
     return redirect('AppSpaceHabitantes')
+
+# POSTEOS
+

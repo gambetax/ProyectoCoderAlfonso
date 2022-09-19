@@ -1,4 +1,5 @@
 import dataclasses
+import datetime
 import random
 
 from django.db import models
@@ -42,7 +43,7 @@ class SistemaPlanetario(models.Model):
     cant_estrellas = models.IntegerField()
     cant_planetas = models.IntegerField()
     clase_estrella = models.ForeignKey(ClaseEstrella,on_delete=models.CASCADE)
-
+    # fecha_creacion = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return f' Sistema : {self.nombre}'
     class Meta:
@@ -53,7 +54,7 @@ class Estrella(models.Model):
     clase_estrella = models.ForeignKey(ClaseEstrella,blank=True,null=False, on_delete=models.CASCADE)
     temperatura_media =  models.IntegerField()
     sistema_planetario = models.ForeignKey(SistemaPlanetario, on_delete=models.CASCADE)
-
+    # fecha_creacion = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return f' {self.nombre}'
     class Meta:
@@ -70,6 +71,7 @@ class Planeta(models.Model):
     temperatura_media = models.FloatField()
     estrella = models.ForeignKey(Estrella, on_delete=models.CASCADE)
     sistema_planetario = models.ForeignKey(SistemaPlanetario, on_delete=models.CASCADE)
+    # fecha_creacion = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f' {self.nombre} '
@@ -84,6 +86,7 @@ class Habitante(models.Model):
     idioma = models.CharField(max_length=40,null=True)
     planeta_natal = models.ForeignKey(Planeta, on_delete=models.CASCADE, related_name='%(class)s_planeta_natal')
     habitando_planeta = models.ForeignKey(Planeta, on_delete=models.CASCADE, related_name='%(class)s_habitando_planeta' )
+    # fecha_creacion = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f' id: {self.id} | {self.nombre} | {self.apellido} | {self.edad} | {self.idioma} | {self.planeta_natal} | {self.habitando_planeta} '

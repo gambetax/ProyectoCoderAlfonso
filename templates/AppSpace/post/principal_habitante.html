@@ -1,0 +1,11 @@
+
+    {% if habitantes|length > 1 %}
+        <h4>Habitantes existentes:</h4>
+    {% else %}
+        <h4>Habitante existente:</h4>
+    {% endif %}
+    {% for habitante in habitantes %}
+        <p>
+            Habitante: {{ habitante.nombre }} {{ habitante.apellido }}
+        </p>
+    {% endfor %}

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -37,31 +38,42 @@
         </header>
         <!-- Navigation-->
         {% include 'bases/navigation.html' %}
-
         <!-- Messages -->
         {% include 'bases/messages.html' %}
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-xl-10 justify-content-center">
+
                     {% block body %}
                     {% endblock %}
+                    <hr class="my-4" />
+                        {% if request.build_absolute_uri == 'http://127.0.0.1:8000/AppSpace/' %}
+                            {% if habitantes|length > 1 %}
+                                <h4 class="text-center">Habitantes existentes:</h4>
+                            {% else %}
+                                <h4>Habitante existente:</h4>
+                            {% endif %}
+                            {% for habitante in habitantes %}
+                                <div class="card text-center mb-2 mw-100 " >
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ habitante.nombre }} {{ habitante.apellido }}</h5>
+                                        <p class="card-text">Actualmente habitando planeta {{ habitante.habitando_planeta }}</p>
+                                        <a class="editar_eliminar" href="#"><i class="bi-person-x-fill"></i>VER</a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    <hr class="my-4" />
                 </div>
             </div>
-
         </div>
+
         {% if messages %}
             {% for message in messages %}
                 {{ message }}
             {% endfor %}
         {% endif %}
 
-        <!-- Main Content-->
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-
-                <hr class="my-4" />
-            </div>
-        </div>
         <!-- Footer-->
         <footer class="border-top">
             <div class="container px-4 px-lg-5">

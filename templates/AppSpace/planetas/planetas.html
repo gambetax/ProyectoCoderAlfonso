@@ -15,7 +15,7 @@
 
     {% if planetas|length > 1 %}
         <h4>Planetas existentes:</h4>
-    {% else %}
+    {% elif planetas|length == 1 %}
         <h4>Planeta existente:</h4>
     {% endif %}
     {% for planeta in planetas %}

@@ -7,7 +7,7 @@
 {% block body %}
     {% if estrellas|length > 1 %}
         <h4>Estrellas existentes:</h4>
-    {% else %}
+    {% elif estrellas|length == 1 %}
         <h4>Estrella existente:</h4>
     {% endif %}
     {% for estrella in estrellas %}

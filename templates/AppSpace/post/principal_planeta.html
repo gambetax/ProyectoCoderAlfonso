@@ -1,0 +1,9 @@
+{% extends index.html %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{ my_form.as_p }}
+
+    <input type="submit" value="Buscar por Planeta">
+    <input type=button value="Volver" onClick="javascript:history.go(-1);"></button>
+</form>
