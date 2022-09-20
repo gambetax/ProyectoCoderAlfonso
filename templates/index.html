@@ -46,6 +46,7 @@
                     {% block body %}
                     {% endblock %}
                     <hr class="my-4" />
+
                         {% if request.build_absolute_uri == 'http://127.0.0.1:8000/AppSpace/' or request.build_absolute_uri == 'https://aqueous-sands-40930.herokuapp.com/AppSpace/' %}
                             {% if habitantes|length > 1 %}
                                 <h4 class="text-center">Habitantes recientes:</h4>
@@ -65,12 +66,6 @@
                 </div>
             </div>
         </div>
-
-        {% if messages %}
-            {% for message in messages %}
-                {{ message }}
-            {% endfor %}
-        {% endif %}
 
         <!-- Footer-->
         <footer class="border-top">

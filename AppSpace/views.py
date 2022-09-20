@@ -1,5 +1,5 @@
 from django.db.models import F
-
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
@@ -224,15 +224,17 @@ def crear_habitantes(request):
                 planeta_natal=data.get('planeta_natal'),
                 habitando_planeta=data.get('habitando_planeta'),
             )
-            form_data.save()
-
-            planeta = Planeta.objects.get(id=request.POST.get('habitando_planeta'))
-            planeta.habitantes = Habitante.objects.exclude(id=None).count()
-            planeta.habitantes = F('habitantes') + 1
-            planeta.save()
-
+            if not (form_data.edad<0):
+                form_data.save()
+                planeta = Planeta.objects.get(id=request.POST.get('habitando_planeta'))
+                planeta.habitantes = Habitante.objects.exclude(id=None).count()
+                planeta.habitantes = F('habitantes') + 1
+                planeta.save()
+                messages.info(request, 'Datos actualizados')
+            else:
+                messages.info(request,'Verifique nuevamente los datos')
         else:
-            redirect('AppSpaceInicio')
+            return  redirect('AppSpaceInicio')
 
     habitantes = Habitante.objects.all()
 
@@ -406,7 +408,6 @@ def editar_sistema(request, id):
             sistema.clase_estrella = data.get('clase_estrella')
 
             sistema.save()
-
             return redirect('AppSpaceSistema')
 
     form_space = SistemaPlanetarioForm(initial={
