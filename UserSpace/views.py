@@ -1,6 +1,6 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate,login
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate, login, update_session_auth_hash
+from django.contrib.auth.forms import AuthenticationForm, UserChangeForm
 from django.shortcuts import render, redirect
 
 from UserSpace.forms import UserRegisterForm, AvatarForm, UserEditForm
@@ -56,28 +56,31 @@ def solicitud_inicio_sesion(request):
     return render(request,'UserSpace/login.html',contexto)
 
 def editar_perfil(request):
-    usuario = request.user
 
+    user = request.user
     if request.method=='POST':
         my_form = UserEditForm(request.POST)
         if my_form.is_valid():
-
             data = my_form.cleaned_data
 
-            usuario.email=data.get('email')
-            usuario.password1 = data.get('password1')
-            usuario.password2 = data.get('password2')
-            if(usuario.username=='admin' or usuario.username=='gambeta'):
-                usuario.is_staff = 1
-            else:
-                usuario.username('admin').is_staff(1)
-                usuario.username('gambeta').is_staff(1)
+            email=data.get('email')
+            password1 = data.get('password1')
+            password2 = data.get('password2')
 
-            usuario.save()
-            return render(request,'AppSpace')
+            if ( password1 ==  password2 ):
+                user.set_password(password1)
+                user.save()
+                update_session_auth_hash(request, user)  # Important!
+                messages.success(request, 'Datos actualizados')
+                return redirect('AppSpaceInicio')
+            else:
+                messages.error(request,'Verifica los datos ')
+        else:
+            messages.error(request,'Verifica los datos ')
+        return redirect('AppSpaceInicio')
 
     form_User = UserEditForm(initial={
-        'email':usuario.email
+        'email': user.email,
     })
 
     contexto = {
