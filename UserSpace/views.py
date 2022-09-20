@@ -50,7 +50,7 @@ def solicitud_inicio_sesion(request):
 
     contexto = {
         'form' : AuthenticationForm(),
-        'name_submit' : 'login'
+        'name_submit' : 'iniciar sesión'
     }
 
     return render(request,'UserSpace/login.html',contexto)

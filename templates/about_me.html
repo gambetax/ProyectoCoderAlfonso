@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+    <body background-color=""> </body>
+		<div class="container">
+			<div class="header">
+				<h1>Sobre Mí</h1>
+			</div><!-- end header-->
+			<div class="image">
+				<img width="150rem" height="150rem" src="{% static 'AppSpace/assets/img/mia modi.jpg' %}">
+			</div><!-- end image-->
+			<div class="intro column">
+				<h2>Introducción</h2>
+				<p>
+                    Tengo 29 años, soy un desarrollador web. Me gusta pasar mi tiempo haciendo música o yendo de viaje. Me encanta la serie Better Call Saul y cualquier cosa que se trate del espacio.
+				</p>
+			</div><!-- end intro-->
+			<div class="skills column">
+				<h3>Mis Habilidades</h3>
+				<ul id="skill-list">
+					<li>Desarrollo Web</li>
+					<li>Trabajo en Equipo</li>
+					<li>Pensamiento Analitico</li>
+				</ul><!--end skill-list-->
+			</div><!-- end skills-->
+			<div class="main-text">
+				<h3>Más de mí</h3>
+				<p>
+					Siempre me interesó el mundo del desarrollo de aplicaciones, pero tengo fascinación por todo lo artistico. Aprendí por mi cuenta a tocar instrumentos.
+				</p>
+				<p>
+					Siempre estoy buscando esoluciones eficaces. Tengo buena predisposición, orden y prolijidad en el trabajo realizado. Ayudo en equipo asistiendo a demas áreas generando un mejor ambiente.
+				</p>
+			</div><!-- end main-text-->
+		</div><!--end container-->
+    </body>
+{% endblock %}

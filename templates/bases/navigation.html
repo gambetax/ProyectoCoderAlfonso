@@ -13,7 +13,16 @@
 
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav py-lg-3 ">
-                        <li class="nav-item m-3"><a class="nav-link" href="{% url 'AppSpaceInicio' %}">Home</a></li>
+                        <li class="nav-item m-3">
+                            <a class="nav-link" href="{% url 'AppSpaceInicio' %}">
+                                Home
+                            </a>
+                        </li>
+                        <li class="nav-item m-3 ">
+                            <a class="nav-link "  href="{% url 'SobreMi' %}">
+                                Sobre Mí
+                            </a>
+                        </li>
                         <li class="nav-item m-3 dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink_Sistemas" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Sistemas Planetarios
@@ -80,7 +89,7 @@
                         <li class="nav-item m-3 dropdown" >
                             {% if user.is_authenticated %}
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink_Usuario" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <h5> {{ user.get_username }}</h5>
+                                    <h7> {{ user.get_username }}</h7>
                                 </a>
                                 <div class="dropdown-menu rounded" aria-labelledby="navbarDropdownMenuLink_Usuario">
                                     <a class="dropdown-item" href="{% url 'UserEditar'%}">Editar</a>
@@ -93,14 +102,13 @@
                                         <img class="nav-item rounded" height="100px" width="100px" src="{{ user.avatar.imagen.url }}" alt="">
                                     {% endif %}
                                 </li>
-
                                 <li class="nav-item m-3">
-                                    <a class="btn btn-dark btn-lg rounded" href="{% url 'UserLogout' %}">Logout</a>
+                                    <a class="btn btn-dark btn-sm rounded" href="{% url 'UserLogout' %}">Cerrar Sesión</a>
                                 </li>
                             {% else %}
                         <li class="nav-item m-3">
                                 <div class="justify-content-between">
-                                    <a class="btn btn-dark btn-lg rounded" href="{% url 'UserLogin' %}">Login</a>
+                                    <a class="btn btn-dark btn-lg rounded" href="{% url 'UserLogin' %}">Iniciar sesión</a>
                                     <a class="btn btn-dark btn-lg rounded" href="{% url 'UserRegister' %}">Registrarse</a>
                                 </div>
                             {% endif %}

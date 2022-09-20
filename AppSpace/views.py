@@ -17,10 +17,6 @@ from AppSpace.forms import PlanetaForm, ClasePlanetaForm, ClaseRegionForm
 def inicio(request):
     habitantes = Habitante.objects.all()
 
-    tamanio = len(habitantes)
-    # if (tamanio > 3):
-    habitantes
-
     contexto = {
         'habitantes': habitantes,
     }

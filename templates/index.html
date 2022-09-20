@@ -52,7 +52,7 @@
                             {% else %}
                                 <h4>Habitante reciente:</h4>
                             {% endif %}
-                            {% for habitante in habitantes|slice:"3:" reversed  %}
+                            {% for habitante in habitantes|slice:":" reversed  %}
                                 <div class="card text-center mb-2 mw-100 " >
                                     <div class="card-body">
                                         <h5 class="card-title">{{ habitante.nombre }} {{ habitante.apellido }}</h5>
