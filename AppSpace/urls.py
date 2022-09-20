@@ -4,7 +4,7 @@ from AppSpace.views import ver_sistemas,crear_sistema_planetario, buscar_sistema
 from AppSpace.views import ver_estrellas,crear_estrellas, buscar_estrellas, editar_estrella, eliminar_estrella
 from AppSpace.views import ver_planetas,crear_planetas, buscar_planetas, editar_planeta, eliminar_planeta
 
-from AppSpace.views import ver_habitantes,crear_habitantes,buscar_habitantes, editar_habitante, eliminar_habitante
+from AppSpace.views import ver_habitantes,crear_habitantes,buscar_habitantes, editar_habitante, eliminar_habitante,info_habitante
 from AppSpace.views import crear_clase_estrella,crear_clase_planeta,crear_clase_region
 
 urlpatterns = [
@@ -29,7 +29,7 @@ urlpatterns = [
     path('planetas/eliminar_planeta/<int:id>', eliminar_planeta, name='AppSpaceEliminarPlaneta'),
 
     path('habitantes', ver_habitantes, name='AppSpaceHabitantes'),
-
+    path('habitantes/<int:id>', info_habitante, name='AppSpaceInfoHabitantes'),
     path('habitantes/crear_habitantes', crear_habitantes, name='AppSpaceCrearHabitantes'),
     path('habitantes/buscar_habitantes', buscar_habitantes, name='AppSpaceBuscarHabitantes'),
     path('habitantes/editar_habitante/<int:id>', editar_habitante, name='AppSpaceEditarHabitante'),

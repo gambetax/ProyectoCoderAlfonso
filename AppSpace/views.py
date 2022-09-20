@@ -18,11 +18,11 @@ def inicio(request):
     habitantes = Habitante.objects.all()
 
     tamanio = len(habitantes)
-    if (tamanio > 3):
-        habitantes = habitantes[-3:]
+    # if (tamanio > 3):
+    habitantes
 
     contexto = {
-        'habitantes': Habitante.objects.all(),
+        'habitantes': habitantes,
     }
 
     return render(request, 'index.html',contexto)
@@ -575,40 +575,48 @@ def eliminar_habitante(request, id):
 
 # VISTAS PARA DESHABILITAR/HABILITAR
 
+#
+# @login_required()
+# def deshabilitar_sistema(request, estado):
+#
+#     sistema = SistemaPlanetario.objects.get(estado=estado)
+#     sistema.save()
+#
+#     return redirect('AppSpaceSistema')
+#
+#
+# @login_required()
+# def deshabilitar_estrella(request, estado):
+#
+#     estrella = Estrella.objects.get(estado=estado)
+#
+#     estrella.save()
+#
+#     return redirect('AppSpaceEstrellas')
+#
+#
+# @login_required()
+# def deshabilitar_planeta(request, estado):
+#
+#     planeta = Planeta.objects.get(estado=estado)
+#     planeta.save()
+#     return redirect('AppSpacePlanetas')
+#
+#
+# @login_required()
+# def deshabilitar_habitante(request, estado):
+#
+#     habitante = Habitante.objects.get(estado=estado)
+#     habitante.save()
+#     return redirect('AppSpaceHabitantes')
+
+# INFO
 
 @login_required()
-def deshabilitar_sistema(request, estado):
+def info_habitante(request, id):
 
-    sistema = SistemaPlanetario.objects.get(estado=estado)
-    sistema.save()
-
-    return redirect('AppSpaceSistema')
-
-
-@login_required()
-def deshabilitar_estrella(request, estado):
-
-    estrella = Estrella.objects.get(estado=estado)
-
-    estrella.save()
-
-    return redirect('AppSpaceEstrellas')
-
-
-@login_required()
-def deshabilitar_planeta(request, estado):
-
-    planeta = Planeta.objects.get(estado=estado)
-    planeta.save()
-    return redirect('AppSpacePlanetas')
-
-
-@login_required()
-def deshabilitar_habitante(request, estado):
-
-    habitante = Habitante.objects.get(estado=estado)
-    habitante.save()
-    return redirect('AppSpaceHabitantes')
-
-# POSTEOS
-
+    habitante = Habitante.objects.get(id=id)
+    contexto = {
+        'habitante' : habitante,
+    }
+    return render(request, 'AppSpace/habitantes/info_habitante.html', contexto)

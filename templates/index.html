@@ -52,17 +52,16 @@
                             {% else %}
                                 <h4>Habitante reciente:</h4>
                             {% endif %}
-                            {% for habitante in habitantes %}
+                            {% for habitante in habitantes|slice:"3:" reversed  %}
                                 <div class="card text-center mb-2 mw-100 " >
                                     <div class="card-body">
                                         <h5 class="card-title">{{ habitante.nombre }} {{ habitante.apellido }}</h5>
                                         <p class="card-text">Actualmente habitando planeta {{ habitante.habitando_planeta }}</p>
-                                        <a class="editar_eliminar" href="#"><i class="bi-person-x-fill"></i>VER</a>
+                                        <a class="editar_eliminar" href="{% url 'AppSpaceInfoHabitantes' habitante.id%}" %}><i class="bi-person"></i>VER</a>
                                     </div>
                                 </div>
                             {% endfor %}
                         {% endif %}
-                    <hr class="my-4" />
                 </div>
             </div>
         </div>

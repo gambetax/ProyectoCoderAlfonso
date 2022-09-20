@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+{% load bootstrap_icons %}
+
+{% block title %} Habitantes {% endblock %}
+
+{% block body %}
+        <p>
+            Habitante: {{ habitante.nombre }} {{ habitante.apellido }}
+            <a class="editar_eliminar" href="{% url 'AppSpaceEditarHabitante' habitante.id %}"><i class="bi-pencil-square"></i> Editar </a>
+            {% if user.is_staff %}
+                <a class="editar_eliminar" href="{% url 'AppSpaceEliminarHabitante' habitante.id %}"><i class="bi-person-x-fill"></i> Eliminar </a>
+            {% endif %}
+        </p>
+
+{% endblock %}

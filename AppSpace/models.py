@@ -84,8 +84,8 @@ class Habitante(models.Model):
     apellido = models.CharField(max_length=40)
     edad = models.IntegerField()
     idioma = models.CharField(max_length=40,null=True)
-    planeta_natal = models.ForeignKey(Planeta, on_delete=models.CASCADE, related_name='%(class)s_planeta_natal')
-    habitando_planeta = models.ForeignKey(Planeta, on_delete=models.CASCADE, related_name='%(class)s_habitando_planeta' )
+    planeta_natal = models.ForeignKey(Planeta, on_delete=models.CASCADE, related_name='%(class)s_planeta_natal',blank=True)
+    habitando_planeta = models.ForeignKey(Planeta, on_delete=models.CASCADE, related_name='%(class)s_habitando_planeta',blank=True)
     # fecha_creacion = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

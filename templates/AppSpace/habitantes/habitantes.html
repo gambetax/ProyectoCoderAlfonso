@@ -19,13 +19,16 @@
         <h4>Habitante existente:</h4>
     {% endif %}
     {% for habitante in habitantes %}
-        <p>
-            Habitante: {{ habitante.nombre }} {{ habitante.apellido }}
-            <a class="editar_eliminar" href="{% url 'AppSpaceEditarHabitante' habitante.id %}"><i class="bi-pencil-square"></i> Editar </a>
-            {% if user.is_staff %}
-                <a class="editar_eliminar" href="{% url 'AppSpaceEliminarHabitante' habitante.id %}"><i class="bi-person-x-fill"></i> Eliminar </a>
-            {% endif %}
-        </p>
+            <div class="card">
+                <div class="card text-center mb-2 mw-100">
+                    <h5 class="card-title">Habitante: {{ habitante.nombre }} {{ habitante.apellido }}</h5>
+
+                        <a class="editar_eliminar" href="{% url 'AppSpaceEditarHabitante' habitante.id %}"><i class="bi-pencil-square"></i> Editar </a>
+                        {% if user.is_staff %}
+                            <a class="editar_eliminar" href="{% url 'AppSpaceEliminarHabitante' habitante.id %}"><i class="bi-person-x-fill"></i> Eliminar </a>
+                        {% endif %}
+                </div>
+            </div>
     {% endfor %}
 
 {% endblock %}
